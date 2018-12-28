@@ -22,3 +22,11 @@
     background-image: url("../images/gold_coin.png"); }
   .coin--silver .coin__face {
     background-image: url("../images/sliver_coin.png"); }
+
+.heart {
+  width: 100px;
+  height: 100px;
+  background-image: url("../images/heart.png");
+  position: absolute;
+  background-size: contain;
+  background-repeat: round; }

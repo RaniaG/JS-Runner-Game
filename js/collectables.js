@@ -1,3 +1,4 @@
+var container=document.getElementsByTagName("body")[0];
 class coin{
     constructor(x,y,goldOrSilver){
         this.x=x;
@@ -25,7 +26,7 @@ class coin{
         this.coin.appendChild(frontFace);
         this.coin.appendChild(middleFace);
         this.coin.appendChild(backFace);
-        document.getElementsByTagName("body")[0].appendChild(this.coin);
+        container.appendChild(this.coin);
         this.drawMiddlePart(middleFace);
 
     }
@@ -50,6 +51,21 @@ class coin{
         this.coin.style.animation=" rotate-coin-3d 5s linear infinite";
     }
 }
+/*------------------------------------------------------------------------------------------------------ */
+
+class heart{
+    constructor(x,y){
+        this.x=x;
+        this.y=y;
+    }
+    drawHeart(){
+        this.heart=document.createElement("heart");
+        this.heart.style.top=this.y;
+        this.heart.style.left=this.x;
+        this.heart.className="heart";
+        container.appendChild(this.heart);
+    }
+}
 
 var c=new coin("100px","100px",true);
 c.drawCoin();
@@ -59,3 +75,6 @@ c.playAnimation();
 var c2=new coin("200px","100px",false);
 c2.drawCoin();
 c2.playAnimation();
+
+var h=new heart("500px","500px");
+h.drawHeart();
