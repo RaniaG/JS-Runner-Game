@@ -1,0 +1,24 @@
+.coin{
+    width:$coin-dimension;
+    height: $coin-dimension;
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    position: absolute;
+    
+    &__face{
+        background-size:cover;
+        width:100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 50%;   
+        &--back{
+            transform: translateZ(-10px);
+        } 
+    }
+    &--gold .coin__face{
+        background-image: url("../images/gold_coin.png");
+    }
+    &--silver .coin__face{
+        background-image: url("../images/sliver_coin.png");
+    }
+}

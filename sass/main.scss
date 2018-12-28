@@ -1,4 +1,17 @@
-@import 'abstracts/test.scss';
+@import 'abstracts/_variables.scss';
+@import 'abstracts/_functions.scss';
+@import 'abstracts/_mixins.scss';
+@import 'abstracts/_placeholders.scss';
+@import 'abstracts/_utilities.scss';
+
+@import 'base/_base.scss';
+@import 'base/_reset.scss';
+@import 'base/_animations.scss';
+
+
+@import 'components/_coin.scss';
+
+
 // @import 'vendors/*';
 // @import 'base/*';
 // @import 'layout/*';
