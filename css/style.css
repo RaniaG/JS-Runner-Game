@@ -30,3 +30,8 @@
   position: absolute;
   background-size: contain;
   background-repeat: round; }
+
+.obstacle {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat; }

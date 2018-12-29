@@ -39,10 +39,7 @@ class coin{
                 div.style.backgroundColor="#EDBD31";
             else
                 div.style.backgroundColor="#C5CECE";
-            div.style.width="100%";
-            div.style.height="100%";
-            div.style.borderRadius="50%";
-            div.style.position="absolute";
+            div.className="coin__face";
             div.style.transform=`translateZ(-${i}px)`
             middleFace.appendChild(div);
         }
