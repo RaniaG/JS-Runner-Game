@@ -1,0 +1,31 @@
+.bgcontainer {
+    background-size: cover;
+    background-position: 1366 0;
+    background-repeat: repeat-x;
+}
+
+.bg {
+    &__layer1 {
+        @extend .bgcontainer;
+        background-image: url(../images/layer1.png);
+        position: relative;
+        bottom: 50px;
+    }
+    &__layer2 {
+        @extend .bgcontainer;
+        background-image: url(../images/layer2.png);
+    }
+    &__layer3 {
+        background-image: url(../images/layer3.png);
+        @extend .bgcontainer;
+    }
+    // &__layer4 {
+    //     background-image: url(../images/layer4.png);
+    //     @extend .bgcontainer;
+    // }
+    &__layer5 {
+        background-image: url(../images/layer5.png);
+        height: 707px;
+        @extend .bgcontainer;
+    }
+}

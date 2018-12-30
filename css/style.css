@@ -35,3 +35,23 @@
   position: absolute;
   background-size: contain;
   background-repeat: no-repeat; }
+
+.bgcontainer, .bg__layer1, .bg__layer2, .bg__layer3, .bg__layer5 {
+  background-size: cover;
+  background-position: 1366 0;
+  background-repeat: repeat-x; }
+
+.bg__layer1 {
+  background-image: url(../images/layer1.png);
+  position: relative;
+  bottom: 50px; }
+
+.bg__layer2 {
+  background-image: url(../images/layer2.png); }
+
+.bg__layer3 {
+  background-image: url(../images/layer3.png); }
+
+.bg__layer5 {
+  background-image: url(../images/layer5.png);
+  height: 707px; }
