@@ -6,3 +6,16 @@
       transform: rotateY(360deg);
     }
   }
+
+@keyframes move-horizontal{
+  0% {
+    left:100%;
+  }
+  100% {
+    left:-100%;
+  }
+}
+@keyframes troll-walk{
+  from{background-position-x:0px;}
+  to{background-position-x:-1207px;}
+}

@@ -4,12 +4,27 @@
   100% {
     transform: rotateY(360deg); } }
 
+@keyframes move-horizontal {
+  0% {
+    left: 100%; }
+  100% {
+    left: -100%; } }
+
+@keyframes troll-walk {
+  from {
+    background-position-x: 0px; }
+  to {
+    background-position-x: -1207px; } }
+
 .coin {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   transform-style: preserve-3d;
-  position: absolute; }
+  position: absolute;
+  animation-duration: 1s, 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; }
   .coin__face {
     background-size: cover;
     width: 100%;
@@ -29,12 +44,18 @@
   background-image: url("../images/heart.png");
   position: absolute;
   background-size: contain;
-  background-repeat: round; }
+  background-repeat: round;
+  animation-duration: 10s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear; }
 
 .obstacle {
   position: absolute;
   background-size: contain;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  animation-duration: 10s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear; }
 
 .bgcontainer, .bg__layer1, .bg__layer2, .bg__layer3, .bg__layer5 {
   background-size: cover;
@@ -55,3 +76,10 @@
 .bg__layer5 {
   background-image: url(../images/layer5.png);
   height: 707px; }
+
+.troll {
+  position: absolute;
+  background-size: cover;
+  animation-timing-function: linear, steps(6);
+  animation-duration: 10s, 0.5s;
+  animation-iteration-count: infinite; }

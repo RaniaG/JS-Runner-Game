@@ -6,4 +6,7 @@
     background-size:contain;
     background-repeat: round;
     // border:1px solid black;
+    animation-duration: $velocity;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }

@@ -34,8 +34,7 @@ var obsInfo=[
 
 ]
 class obstacle{
-    constructor(x,type){
-        this.x=x;
+    constructor(type){
         this.type=type; //0 -5
         if(type==5)
             this.pit=true;
@@ -43,33 +42,37 @@ class obstacle{
         this.width=obsInfo[this.type].width;
         this.height=obsInfo[this.type].heightRatio*this.width;
         this.src=obsInfo[this.type].src;
+        this.draw();
+        this.animate();
     }
-    drawObstacle(){
-        this.obsObj=document.createElement("div");
-       this.obsObj.style.width=this.width+"px";
-       this.obsObj.style.height=this.height+"px";
-       this.obsObj.style.left=this.x;
+    draw(){
+        this.div=document.createElement("div");
+       this.div.style.width=this.width+"px";
+       this.div.style.height=this.height+"px";
        if(!this.pit)
-            this.obsObj.style.top=(parseInt(roadTop)-this.height)+"px";
-        else this.obsObj.style.top=roadTop;
-       this.obsObj.className='obstacle';
-       this.obsObj.style.backgroundImage=`url(${this.src})`;
-       this.obsObj.style.border='1px solid black';
-        container.appendChild(this.obsObj);
+            this.div.style.top=(parseInt(roadTop)-this.height)+"px";
+        else this.div.style.top=roadTop;
+       this.div.className='obstacle';
+       this.div.style.backgroundImage=`url(${this.src})`;
+       this.div.style.border='1px solid black';
+        container.appendChild(this.div);
     }
-
+    animate(){
+        this.div.style.animationName=' move-horizontal';
+        setTimeout(destroy,parseInt(velocity)*1000,this);
+    }
 }
 
-var obs=new obstacle('0px',0);
-obs.drawObstacle();
-var obs=new obstacle('300px',1);
-obs.drawObstacle();
-var obs=new obstacle('600px',2);
-obs.drawObstacle();
-var obs=new obstacle('900px',3);
-obs.drawObstacle();
-var obs=new obstacle('1000px',4);
-obs.drawObstacle();
-var obs=new obstacle('1100px',5);
-obs.drawObstacle();
+var obs=new obstacle(0);
+
+// var obs=new obstacle(1);
+// obs.drawObstacle();
+// var obs=new obstacle(2);
+// obs.drawObstacle();
+// var obs=new obstacle(3);
+// obs.drawObstacle();
+// var obs=new obstacle(4);
+// obs.drawObstacle();
+// var obs=new obstacle(5);
+// obs.drawObstacle();
 
