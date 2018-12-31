@@ -1,80 +1,38 @@
-var layer1 = document.querySelector(".bg__layer1");
-var layer2 = document.querySelector(".bg__layer2");
-var layer3 = document.querySelector(".bg__layer3");
-// var layer4 = document.querySelector(".bg__layer4");
-var layer5 = document.querySelector(".bg__layer5");
+var stars = document.querySelector(".bg__layer1");
+var clouds = document.querySelector(".bg__layer2");
+var mountaines = document.querySelector(".bg__layer3");
+var ground = document.querySelector(".bg__layer5");
 
 
-function BackGround(layer, sec, bgpos) {
-    function slide() {
-        bgpos -= 2;
-        layer.style.backgroundPosition = bgpos + 'px 0';
+/*----------------------------------------BGclass-------------------------------------------------------*/
+
+
+class Background {
+    constructor(layer, time, bgpos, distance) {
+        this.layer = layer;
+        this.time = time;
+        this.bgpos = bgpos;
+        this.distance = distance;
     }
-    setInterval(slide, sec);
+    slideBackground() {
+        this.bgpos -= this.distance; 
+        this.layer.style.backgroundPosition = this.bgpos + 'px 0';
+    }
+
+
 }
-
-
-function run() {
-    BackGround(layer1, 7, 1366);
-    BackGround(layer2, 5, 1366);
-    BackGround(layer3, 3, 1366);
-    // move(layer4, 1, 1366);
-    BackGround(layer5, 1, 1366);
-}
-run();
-
+let star = new Background(stars, 7, 1366,2);
+setInterval(() => star.slideBackground(), 7);
+let cloud = new Background(clouds, 5, 1366,2);
+setInterval(() => cloud.slideBackground(), 5,2);
+let mountain = new Background(mountaines, 3, 1366,2);
+setInterval(() => mountain.slideBackground(), 5,2);
+let groundl = new Background(ground, 1, 1366,5);
+setInterval(() => groundl.slideBackground(), 5,2);
 
 
 
-
-
-/*----------------------------------------class-------------------------------------------------------*/
-
-
-// class Background {
-//     constructor(layer, sec, bgpos) {
-//         this.layer = layer;
-//         this.sec = sec;
-//         this.bgpos = bgpos;
-//     }
-//     slideBackground() {
-//         this.bgpos -= 2;
-
-//         this.layer.style.BackgroundPosition = this.bgpos + 'px 0';
-//     }
-
-
-// }
-
-
-
-// let l1 = new Background(layer1, 7, 1366);
-// setInterval(() => l1.slideBackground, 7);
-
-
-// class Background {
-//     constructor(layer, sec, bgpos) {
-//         this.layer = layer;
-//         this.sec = sec;
-//         this.bgpos = bgpos;
-//     }
-//     move() {
-//         var self = this;
-//         self.start = function () {
-//             self.interval = setInterval(function () { self.slideBackground(); }, 7);
-//         };
-//         self.slideBackground = function () {
-//             this.bgpos -= 2;
-//             this.layer.style.BackgroundPosition = 1366 + 'px 0';
-//         }
-//     }
-// }
-
-// l1.start();
-//  l1.self.slideBackground();
-// setInterval(() => l1.slideBackground, 7);
-// setInterval(function() {l1.slideBackground; }, 7);
-
+/*----------------------------------------EndOFBGclass-------------------------------------------------------*/
 
 
 
