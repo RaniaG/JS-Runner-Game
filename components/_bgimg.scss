@@ -5,6 +5,7 @@
 }
 
 .bg {
+    height: 100vh;
     &__layer1 {
         @extend .bgcontainer;
         background-image: url(../images/layer1.png);

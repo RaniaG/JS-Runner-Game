@@ -1,3 +1,7 @@
+* {
+  padding: 0;
+  margin: 0; }
+
 @keyframes rotate-coin-3d {
   0% {
     transform: rotateY(0deg); }
@@ -62,20 +66,19 @@
   background-position: 1366 0;
   background-repeat: repeat-x; }
 
-.bg__layer1 {
-  background-image: url(../images/layer1.png);
-  position: relative;
-  bottom: 50px; }
-
-.bg__layer2 {
-  background-image: url(../images/layer2.png); }
-
-.bg__layer3 {
-  background-image: url(../images/layer3.png); }
-
-.bg__layer5 {
-  background-image: url(../images/layer5.png);
-  height: 707px; }
+.bg {
+  height: 100vh; }
+  .bg__layer1 {
+    background-image: url(../images/layer1.png);
+    position: relative;
+    bottom: 50px; }
+  .bg__layer2 {
+    background-image: url(../images/layer2.png); }
+  .bg__layer3 {
+    background-image: url(../images/layer3.png); }
+  .bg__layer5 {
+    background-image: url(../images/layer5.png);
+    height: 707px; }
 
 .troll {
   position: absolute;
