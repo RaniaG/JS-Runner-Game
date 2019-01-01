@@ -1,7 +1,7 @@
-var stars = document.querySelector(".bg__layer1");
-var clouds = document.querySelector(".bg__layer2");
-var mountaines = document.querySelector(".bg__layer3");
-var ground = document.querySelector(".bg__layer5");
+var stars = document.querySelector(".bg__starts");
+var clouds = document.querySelector(".bg__clouds");
+var mountaines = document.querySelector(".bg__mountaines");
+var ground = document.querySelector(".bg__ground");
 
 
 /*----------------------------------------BGclass-------------------------------------------------------*/
