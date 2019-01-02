@@ -7,28 +7,29 @@
 }
 
 .bg {
+   
     height: 100vh;
-    &__layer1 {
+
+    &__starts {
         @extend .bgcontainer;
         background-image: url(../images/layer1.png);
         position: relative;
         bottom: 50px;
     }
-    &__layer2 {
+    &__clouds {
         @extend .bgcontainer;
         background-image: url(../images/layer2.png);
     }
-    &__layer3 {
+    &__mountaines {
         background-image: url(../images/layer3.png);
         @extend .bgcontainer;
     }
-    // &__layer4 {
-    //     background-image: url(../images/layer4.png);
-    //     @extend .bgcontainer;
-    // }
-    &__layer5 {
+
+    &__ground {
         background-image: url(../images/layer5.png);
         height: 707px;
+        // position: relative;
+        //  bottom: 50px;
         @extend .bgcontainer;
     }
 }

@@ -93,21 +93,21 @@ body {
     width: 200px;
     height: 146px; }
 
-.bgcontainer, .bg__layer1, .bg__layer2, .bg__layer3, .bg__layer5 {
+.bgcontainer, .bg__starts, .bg__clouds, .bg__mountaines, .bg__ground {
   background-size: contain;
   background-position: 1366 0;
   background-repeat: repeat-x; }
 
 .bg {
   height: 100vh; }
-  .bg__layer1 {
+  .bg__starts {
     background-image: url(../images/layer1.png);
     position: relative;
     bottom: 50px; }
-  .bg__layer2 {
+  .bg__clouds {
     background-image: url(../images/layer2.png); }
-  .bg__layer3 {
+  .bg__mountaines {
     background-image: url(../images/layer3.png); }
-  .bg__layer5 {
+  .bg__ground {
     background-image: url(../images/layer5.png);
     height: 707px; }
