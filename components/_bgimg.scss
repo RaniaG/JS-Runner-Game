@@ -1,7 +1,9 @@
 .bgcontainer {
-    background-size: cover;
+    background-size: contain;
     background-position: 1366 0;
     background-repeat: repeat-x;
+    // height: inherit;
+    
 }
 
 .bg {

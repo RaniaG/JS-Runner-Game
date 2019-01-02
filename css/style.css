@@ -2,6 +2,9 @@
   padding: 0;
   margin: 0; }
 
+body {
+  overflow: hidden; }
+
 @keyframes rotate-coin-3d {
   0% {
     transform: rotateY(0deg); }
@@ -20,36 +23,36 @@
   to {
     background-position-x: -1207px; } }
 
-.coin {
+.collectable--coin {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   transform-style: preserve-3d;
   position: absolute;
-  animation-duration: 1s, 10s;
-  animation-iteration-count: infinite;
+  animation-duration: 1s, 3.145s;
+  animation-iteration-count: infinite, 1;
   animation-timing-function: linear; }
-  .coin__face {
+  .collectable--coin__face {
     background-size: cover;
     width: 100%;
     height: 100%;
     position: absolute;
     border-radius: 50%; }
-    .coin__face--back {
+    .collectable--coin__face--back {
       transform: translateZ(-10px); }
-  .coin--gold .coin__face {
+  .collectable--coin--gold .collectable--coin__face {
     background-image: url("../images/gold_coin.png"); }
-  .coin--silver .coin__face {
+  .collectable--coin--silver .collectable--coin__face {
     background-image: url("../images/sliver_coin.png"); }
 
-.heart {
+.collectable--heart {
   width: 100px;
   height: 100px;
   background-image: url("../images/heart.png");
   position: absolute;
   background-size: contain;
   background-repeat: round;
-  animation-duration: 10s;
+  animation-duration: 3.145s;
   animation-fill-mode: forwards;
   animation-timing-function: linear; }
 
@@ -57,12 +60,41 @@
   position: absolute;
   background-size: contain;
   background-repeat: no-repeat;
-  animation-duration: 10s;
+  animation-duration: 3.145s;
   animation-fill-mode: forwards;
   animation-timing-function: linear; }
+  .obstacle--rock--1 {
+    background-image: url(../images/rock1.png);
+    width: 400px;
+    height: 110.8px; }
+  .obstacle--rock--2 {
+    background-image: url(../images/rock2.png);
+    width: 300px;
+    height: 105.3px; }
+  .obstacle--rock--3 {
+    background-image: url(../images/rock3.png);
+    width: 300px;
+    height: 110.61px; }
+  .obstacle--cactus--1 {
+    background-image: url(../images/cactus1.png);
+    width: 200px;
+    height: 160.62px; }
+  .obstacle--cactus--2 {
+    background-image: url(../images/cactus2.png);
+    width: 100px;
+    height: 105.4px; }
+  .obstacle--enemy {
+    background-size: cover;
+    animation-timing-function: linear, steps(6);
+    animation-duration: 3.145s, 0.5s;
+    animation-iteration-count: 1,infinite;
+    background-image: url("../images/trolls.png");
+    background-position: '0 0';
+    width: 200px;
+    height: 146px; }
 
 .bgcontainer, .bg__layer1, .bg__layer2, .bg__layer3, .bg__layer5 {
-  background-size: cover;
+  background-size: contain;
   background-position: 1366 0;
   background-repeat: repeat-x; }
 
@@ -79,10 +111,3 @@
   .bg__layer5 {
     background-image: url(../images/layer5.png);
     height: 707px; }
-
-.troll {
-  position: absolute;
-  background-size: cover;
-  animation-timing-function: linear, steps(6);
-  animation-duration: 10s, 0.5s;
-  animation-iteration-count: infinite; }

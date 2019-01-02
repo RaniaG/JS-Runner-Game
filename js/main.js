@@ -24,18 +24,15 @@ class Background {
 let star = new Background(stars, 7, 1366,2);
 setInterval(() => star.slideBackground(), 7);
 let cloud = new Background(clouds, 5, 1366,2);
-setInterval(() => cloud.slideBackground(), 5,2);
+setInterval(() => cloud.slideBackground(), 5);
 let mountain = new Background(mountaines, 3, 1366,2);
-setInterval(() => mountain.slideBackground(), 5,2);
+setInterval(() => mountain.slideBackground(), 5);
 let groundl = new Background(ground, 1, 1366,5);
-setInterval(() => groundl.slideBackground(), 5,2);
+setInterval(() => groundl.slideBackground(), 5);
 
 
 
 /*----------------------------------------EndOFBGclass-------------------------------------------------------*/
-
-
-
 
 
 

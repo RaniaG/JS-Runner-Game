@@ -1,0 +1,41 @@
+.collectable{
+    &--coin{
+        width:$collectable-dimension;
+        height: $collectable-dimension;
+        border-radius: 50%;
+        transform-style: preserve-3d;
+        position: absolute;
+        animation-duration: $coin-rotation-speed,$velocity;
+        animation-iteration-count: infinite, 1;
+        animation-timing-function: linear;
+        // animation-delay: 0.5s,0s;
+        &__face{
+            background-size:cover;
+            width:100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 50%;   
+            &--back{
+                transform: translateZ(-10px);
+            } 
+        }
+        &--gold .collectable--coin__face{
+            background-image: url("../images/gold_coin.png");
+        }
+        &--silver .collectable--coin__face{
+            background-image: url("../images/sliver_coin.png");
+        }
+    }
+    &--heart{
+    width:$collectable-dimension;
+    height: $collectable-dimension;
+    background-image:url("../images/heart.png");
+    position: absolute;
+    background-size:contain;
+    background-repeat: round;
+    // border:1px solid black;
+    animation-duration: $velocity;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+}
