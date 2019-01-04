@@ -95,10 +95,7 @@ class Hero extends gameObject {
     }
 
     shoot(){
-        this.stopRunning();
-        if(this.isJumping == false && this.isShooting == false){
-
-        }
+        //shoot logic here
     }
 }
 var x = {
