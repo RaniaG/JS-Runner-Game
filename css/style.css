@@ -111,3 +111,10 @@ body {
   .bg__ground {
     background-image: url(../images/layer5.png);
     height: 707px; }
+
+.hero {
+  height: 250px;
+  width: 250px;
+  /* background: url("Run-Stripe.png") 0px 0px; */
+  position: absolute;
+  top: 256px; }
