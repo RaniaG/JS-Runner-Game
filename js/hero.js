@@ -129,7 +129,7 @@ var x = {
 console.log(x.run);
 var hero = new Hero(70, x, 300, 0, { run: 2400, jump:3000, shoot: 900  }, document.getElementById("hero"))
 hero.startRunning();
-window.onkeydown = function () {
+window.onkeydown = function (event) {
     if (event.keyCode == 32) {
         hero.startJumping();
     }

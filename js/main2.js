@@ -25,6 +25,7 @@ class MovingObject{
         this.width=w;
         this.height=h;
         this.timeOut=3.415; //second
+        this.timeOfAppearance;
     }
     animate(){
         setTimeout(destroy,parseInt(this.timeOut)*1000,this);
@@ -53,8 +54,8 @@ class Rock extends Obstacle{
     constructor(y){
         super(y,400,0.277*400);
         this.className+=' obstacle--rock--1';
-        this.draw();
-        this.animate();
+        // this.draw();
+        // this.animate();
     }
     draw(){
         super.draw();
@@ -71,8 +72,8 @@ class Cactus extends Obstacle{
     constructor(y){
         super(y,200,0.8031*200);
         this.className+=' obstacle--cactus--1';
-        this.draw();
-        this.animate();
+        // this.draw();
+        // this.animate();
     }
     draw(){
         super.draw();
@@ -87,8 +88,8 @@ class Enemy extends Obstacle{
     constructor(y){
         super(y,200,0.73*200);
         this.className+=' obstacle--enemy';
-        this.draw();
-        this.animate();
+        // this.draw();
+        // this.animate();
     }
     draw(){
         super.draw();
@@ -117,8 +118,8 @@ class Coin extends Collectable{
         this.goldColor="#EDBD31";
         this.silverColor="#C5CECE";
         this.goldOrSilver=goldOrSilver; //gold is true, silver is false
-        this.draw();
-        this.animate();
+        // this.draw();
+        // this.animate();
     }
     draw(){
         if(this.goldOrSilver)
@@ -165,8 +166,8 @@ class Coin extends Collectable{
 class Heart extends Collectable{
     constructor(y){
         super(y);
-        this.draw();
-        this.animate();
+        // this.draw();
+        // this.animate();
     }
     draw(){
         this.div.style.top=(parseInt(this.y)-(this.height))+"px";
@@ -178,24 +179,36 @@ class Heart extends Collectable{
         super.animate();
     }
 }
-
+var e=new Enemy(roadTop);
+var ca=new Cactus(roadTop);
+var r=new Rock(roadTop);
+var c=new Coin(roadTop,true);
+var c2=new Coin(roadTop,false);
+var h=new Heart(roadTop);
 
 setTimeout(function(){
-    var e=new Cactus(roadTop);
+    e.draw();
+    e.animate();
 },1000);
 setTimeout(function(){
-    var e=new Rock(roadTop);
+    ca.draw();
+    ca.animate();
 },3000);
+
 setTimeout(function(){
-    var e=new Enemy(roadTop);
+    r.draw();
+    r.animate();
 },6000);
 
 setTimeout(function(){
-    var e=new Coin(roadTop,true);
+    c.draw();
+    c.animate();
 },4000);
 setTimeout(function(){
-    var e=new Coin(roadTop,false);
+    c2.draw();
+    c2.animate();
 },5000);
 setTimeout(function(){
-    var e=new Heart(roadTop);
+    h.draw();
+    h.animate();
 },7000);
