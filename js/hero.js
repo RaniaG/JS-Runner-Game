@@ -16,7 +16,9 @@ class Hero extends gameObject {
         this.firstRun = true; // acts if the game is running for the first time or after game over
         this.heroCharacter = heroCharacter;
         this.isJumping = false;
-        this.topPosition = 256;
+        this.top = (parseInt(roadTop) - this.heroCharacter.clientHeight);
+        this.heroCharacter.style.top = this.top+"px";
+        this.topPosition = this.top;
         this.isShooting = false;
     }
     stopRunning() {
@@ -61,6 +63,7 @@ class Hero extends gameObject {
     }
 
     startJumping() {
+        // debugger;
         if (this.isJumping == false) {
             this.stopRunning();
             this.isJumping = true;
@@ -69,7 +72,7 @@ class Hero extends gameObject {
             var imageNumber = 0;
             this.startSliceOffset = this.stripeOffset;
             this.clearRunInterval = window.setInterval(() => {
-                this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 256px';
+                this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
                 if (this.startSliceOffset < this.stripeEnds.jump) {
                     this.startSliceOffset = this.startSliceOffset + this.stripeOffset;
                     imageNumber++;
@@ -85,7 +88,7 @@ class Hero extends gameObject {
                 else {
                     this.startSliceOffset = this.stripeOffset;
                     imageNumber = 0;
-                    this.topPosition = 256;
+                    this.topPosition = this.top;
                     this.heroCharacter.style.top = this.topPosition + "px";
                     this.stopRunning();
                     this.isJumping = false;
@@ -104,7 +107,7 @@ class Hero extends gameObject {
             this.isJumping = true;
             this.clearRunInterval = window.setInterval(() => {
                 this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.shoot + ")";
-                this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 256px';
+                this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
                 if (this.startSliceOffset < this.stripeEnds.shoot) {
                     this.startSliceOffset = this.startSliceOffset + this.stripeOffset;
                 }
