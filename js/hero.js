@@ -8,7 +8,7 @@ class gameObject {
         this.stripeEnds = stripeEnds;
     }
 }
-
+ //roadTop 260px
 class Hero extends gameObject {
     constructor(animateInterval, stripeURLs, stripeOffset, startSliceOffset, stripeEnds, heroCharacter) {
         super(animateInterval, stripeURLs, stripeOffset, startSliceOffset, stripeEnds);
@@ -48,7 +48,7 @@ class Hero extends gameObject {
         // console.log(this.stripeURLs);
         this.clearRunInterval = window.setInterval(() => {
             this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.run + ")";
-            this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 256px';
+            this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
             // console.log(this.startSliceOffset);
             if (this.startSliceOffset < this.stripeEnds.run) {
                 this.startSliceOffset = this.startSliceOffset + this.stripeOffset;

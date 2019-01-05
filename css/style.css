@@ -113,8 +113,8 @@ body {
     height: 707px; }
 
 .hero {
-  height: 250px;
-  width: 250px;
+  height: 254px;
+  width: 300px;
   /* background: url("Run-Stripe.png") 0px 0px; */
   position: absolute;
-  top: 256px; }
+  top: calc(560px - 254px); }
