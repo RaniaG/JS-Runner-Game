@@ -23,6 +23,12 @@ body {
   to {
     background-position-x: -1207px; } }
 
+@keyframes bg {
+  from {
+    background-position: 1366px 0; }
+  to {
+    background-position: 0px 0px; } }
+
 .collectable--coin {
   width: 100px;
   height: 100px;
@@ -94,23 +100,28 @@ body {
     height: 146px; }
 
 .bgcontainer, .bg__starts, .bg__clouds, .bg__mountaines, .bg__ground {
-  background-size: contain;
-  background-position: 1366 0;
+  background-size: 100% 100%;
   background-repeat: repeat-x; }
 
 .bg {
   height: 100vh; }
   .bg__starts {
     background-image: url(../images/layer1.png);
+    animation: bg 2s infinite linear;
     position: relative;
-    bottom: 50px; }
+    bottom: 55px; }
   .bg__clouds {
-    background-image: url(../images/layer2.png); }
+    background-image: url(../images/layer2.png);
+    animation: bg 2s infinite linear; }
   .bg__mountaines {
-    background-image: url(../images/layer3.png); }
+    background-image: url(../images/layer3.png);
+    animation: bg 2s infinite linear; }
   .bg__ground {
     background-image: url(../images/layer5.png);
-    height: 707px; }
+    height: 800px;
+    animation: bg 1s infinite linear;
+    position: relative;
+    bottom: 75px; }
 
 .hero {
   height: 254px;
