@@ -21,7 +21,7 @@ body {
   from {
     background-position-x: 0px; }
   to {
-    background-position-x: -1207px; } }
+    background-position-x: -1809px; } }
 
 @keyframes bg {
   from {
@@ -81,10 +81,18 @@ body {
     background-image: url(../images/rock3.png);
     width: 300px;
     height: 110.61px; }
+  .obstacle--rock--4 {
+    background-image: url(../images/rock4.png);
+    width: 200px;
+    height: 80.94px; }
+  .obstacle--rock--5 {
+    background-image: url(../images/rock5.png);
+    width: 200px;
+    height: 123.54px; }
   .obstacle--cactus--1 {
     background-image: url(../images/cactus1.png);
-    width: 200px;
-    height: 160.62px; }
+    width: 150px;
+    height: 120.465px; }
   .obstacle--cactus--2 {
     background-image: url(../images/cactus2.png);
     width: 100px;
@@ -96,8 +104,8 @@ body {
     animation-iteration-count: 1,infinite;
     background-image: url("../images/trolls.png");
     background-position: '0 0';
-    width: 200px;
-    height: 146px; }
+    width: 300px;
+    height: 219px; }
 
 .bgcontainer, .bg__starts, .bg__clouds, .bg__mountaines, .bg__ground {
   background-size: 100% 100%;
