@@ -181,28 +181,28 @@ class Heart extends Collectable{
     }
 }
 var e=new Enemy(roadTop);
-var e2=new Enemy(roadTop);
+// var e2=new Enemy(roadTop);
 
 var ca=new Cactus(roadTop);
-var r=new Rock(roadTop);
-var r2=new Rock(roadTop);
+// var r=new Rock(roadTop);
+// var r2=new Rock(roadTop);
 
 var c=new Coin(roadTop,true);
 var c2=new Coin(roadTop,false);
 var h=new Heart(roadTop);
 
-setTimeout(function(){
-    r.draw();
-    r.animate();
-},1000);
-setTimeout(function(){
-    r2.draw();
-    r2.animate();
-},1350);
-
 // setTimeout(function(){
 //     r.draw();
 //     r.animate();
+// },1000);
+// setTimeout(function(){
+//     r2.draw();
+//     r2.animate();
+// },1700);
+
+// setTimeout(function(){
+//     e2.draw();
+//     e2.animate();
 // },6000);
 
 // setTimeout(function(){
