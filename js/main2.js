@@ -52,14 +52,14 @@ class Obstacle extends MovingObject{
 
 class Rock extends Obstacle{
     constructor(y){
-        super(y,400,0.277*400);
-        this.className+=' obstacle--rock--1';
+        super(y,200,0.6177*200);
+        this.className+=' obstacle--rock--5';
         // this.draw();
         // this.animate();
     }
     draw(){
         super.draw();
-        this.div.style.top=(parseInt(roadTop)-(this.height/2))+"px";
+        this.div.style.top=(parseInt(roadTop)-(this.height))+"px";
         container.appendChild(this.div);
     }
     animate(){
@@ -70,7 +70,7 @@ class Rock extends Obstacle{
 
 class Cactus extends Obstacle{
     constructor(y){
-        super(y,200,0.8031*200);
+        super(y,150,0.8031*150);
         this.className+=' obstacle--cactus--1';
         // this.draw();
         // this.animate();
@@ -86,7 +86,7 @@ class Cactus extends Obstacle{
 }
 class Enemy extends Obstacle{
     constructor(y){
-        super(y,200,0.73*200);
+        super(y,300,0.73*300);
         this.className+=' obstacle--enemy';
         // this.draw();
         // this.animate();
@@ -97,6 +97,7 @@ class Enemy extends Obstacle{
     }
     animate(){
         this.div.style.animationName='move-horizontal, troll-walk';
+        // this.div.style.backgroundPositionX='-300px';
         super.animate();
     }
 }
@@ -138,7 +139,7 @@ class Coin extends Collectable{
         this.div.appendChild(middleFace);
         this.div.appendChild(backFace);
         container.appendChild(this.div);
-        this.drawMiddlePart(middleFace);
+        // this.drawMiddlePart(middleFace);
 
     }
     drawMiddlePart(middleFace){
@@ -180,35 +181,39 @@ class Heart extends Collectable{
     }
 }
 var e=new Enemy(roadTop);
+var e2=new Enemy(roadTop);
+
 var ca=new Cactus(roadTop);
 var r=new Rock(roadTop);
+var r2=new Rock(roadTop);
+
 var c=new Coin(roadTop,true);
 var c2=new Coin(roadTop,false);
 var h=new Heart(roadTop);
 
 setTimeout(function(){
-    e.draw();
-    e.animate();
-},1000);
-setTimeout(function(){
-    ca.draw();
-    ca.animate();
-},3000);
-
-setTimeout(function(){
     r.draw();
     r.animate();
-},6000);
+},1000);
+setTimeout(function(){
+    r2.draw();
+    r2.animate();
+},1350);
 
-setTimeout(function(){
-    c.draw();
-    c.animate();
-},4000);
-setTimeout(function(){
-    c2.draw();
-    c2.animate();
-},5000);
-setTimeout(function(){
-    h.draw();
-    h.animate();
-},7000);
+// setTimeout(function(){
+//     r.draw();
+//     r.animate();
+// },6000);
+
+// setTimeout(function(){
+//     c.draw();
+//     c.animate();
+// },4000);
+// setTimeout(function(){
+//     c2.draw();
+//     c2.animate();
+// },5000);
+// setTimeout(function(){
+//     h.draw();
+//     h.animate();
+// },7000);

@@ -1,35 +1,34 @@
 .bgcontainer {
-    background-size: contain;
-    background-position: 1366 0;
-    background-repeat: repeat-x;
-    // height: inherit;
-    
+    background-size: 100% 100%;
+   background-repeat: repeat-x;
 }
 
 .bg {
-   
     height: 100vh;
-
     &__starts {
         @extend .bgcontainer;
         background-image: url(../images/layer1.png);
+        animation: bg 2s infinite linear;
         position: relative;
-        bottom: 50px;
+        bottom: 55px;
     }
     &__clouds {
         @extend .bgcontainer;
         background-image: url(../images/layer2.png);
+        animation: bg 2s infinite linear;
     }
     &__mountaines {
         background-image: url(../images/layer3.png);
         @extend .bgcontainer;
+        animation: bg 2s infinite linear;
+      
     }
-
     &__ground {
         background-image: url(../images/layer5.png);
-        height: 707px;
-        // position: relative;
-        //  bottom: 50px;
+        height: 800px;
         @extend .bgcontainer;
+        animation: bg 1s infinite linear;
+        position: relative;
+        bottom: 75px;
     }
 }
