@@ -6,7 +6,7 @@ var sceneCounter = 0;
 function randRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-var time = 900;
+var time = 1000;
 var obstacleKind = 1;
 var generatedObjects = [];
 
@@ -23,7 +23,7 @@ function generateCollectable() {
 // at most one cactus at scene 
 //at most 2 enemies per scene
 function generateObstacle() {
-    time = randRange(900, 10000);
+    time = randRange(1000, 10000);
     obstacleKind = randRange(1, 3);
     generatedObjects.push(obstacleKind);
 
