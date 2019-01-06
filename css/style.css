@@ -21,13 +21,19 @@ body {
   from {
     background-position-x: 0px; }
   to {
-    background-position-x: -1809px; } }
+    background-position-x: -1207px; } }
 
 @keyframes bg {
   from {
     background-position: 1366px 0; }
   to {
     background-position: 0px 0px; } }
+
+@keyframes troll-walk {
+  from {
+    background-position-x: 0px; }
+  to {
+    background-position-x: -1809px; } }
 
 .collectable--coin {
   width: 100px;
@@ -137,3 +143,20 @@ body {
   /* background: url("Run-Stripe.png") 0px 0px; */
   position: absolute;
   left: -50px; }
+
+.icon {
+  width: 40px;
+  height: 40px;
+  left: 5px;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat; }
+  .icon--heart {
+    background-image: url("../images/heart.png");
+    top: 41px; }
+  .icon--coin {
+    background-image: url("../images/gold_coin.png");
+    top: 81px; }
+  .icon--run {
+    background-image: url("../images/Idle.png");
+    top: 0px; }

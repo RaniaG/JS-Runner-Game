@@ -22,6 +22,9 @@ class Hero extends gameObject {
         this.topPosition = this.top;
         this.isShooting = false;
         this.highJump = false;
+        this.lives = 3;
+        this.coins = 0;
+        this.milage = 0;
     }
     stopCurrentAnimation() {
         window.clearInterval(this.clearAnimateInterval);
@@ -166,6 +169,31 @@ class Hero extends gameObject {
                 }
             }, this.animateInterval);
         }
+    }
+    crash(object)
+    {
+        //if collectable
+            //if heart
+            //if coin
+        //if obstacle
+            //if to end game
+            // if to reduce lives 
+    }
+    updateLives()
+    {
+
+    }
+    updateCoins()
+    {
+
+    }
+    updateMilage()
+    {
+        
+    }
+    endGame()
+    {
+
     }
 }
 var x = {
