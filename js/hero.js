@@ -12,17 +12,19 @@ class gameObject {
 class Hero extends gameObject {
     constructor(animateInterval, stripeURLs, stripeOffset, startSliceOffset, stripeEnds, heroCharacter) {
         super(animateInterval, stripeURLs, stripeOffset, startSliceOffset, stripeEnds);
-        this.clearRunInterval;
+        this.clearAnimateInterval;
         this.firstRun = true; // acts if the game is running for the first time or after game over
         this.heroCharacter = heroCharacter;
         this.isJumping = false;
-        this.top = (parseInt(roadTop) - this.heroCharacter.clientHeight);
+        // clientHeight is an element height including padding but not bordering 
+        this.top = (parseInt(roadTop) - this.heroCharacter.clientHeight); // to place hero above road
         this.heroCharacter.style.top = this.top+"px";
         this.topPosition = this.top;
         this.isShooting = false;
+        this.highJump = false;
     }
-    stopRunning() {
-        window.clearInterval(this.clearRunInterval);
+    stopCurrentAnimation() {
+        window.clearInterval(this.clearAnimateInterval);
     }
     startRunning() //stripeOffset,startSliceOffset,animateInterval,
     {
@@ -48,7 +50,7 @@ class Hero extends gameObject {
         // {
         // debugger;
         // console.log(this.stripeURLs);
-        this.clearRunInterval = window.setInterval(() => {
+        this.clearAnimateInterval = window.setInterval(() => {
             this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.run + ")";
             this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
             // console.log(this.startSliceOffset);
@@ -65,13 +67,13 @@ class Hero extends gameObject {
     startJumping() {
         // debugger;
         if (this.isJumping == false) {
-            this.stopRunning();
+            this.stopCurrentAnimation();
             this.isJumping = true;
             this.isShooting = true;
             this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.jump + ")";
             var imageNumber = 0;
             this.startSliceOffset = this.stripeOffset;
-            this.clearRunInterval = window.setInterval(() => {
+            this.clearAnimateInterval = window.setInterval(() => {
                 this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
                 if (this.startSliceOffset < this.stripeEnds.jump) {
                     this.startSliceOffset = this.startSliceOffset + this.stripeOffset;
@@ -90,7 +92,7 @@ class Hero extends gameObject {
                     imageNumber = 0;
                     this.topPosition = this.top;
                     this.heroCharacter.style.top = this.topPosition + "px";
-                    this.stopRunning();
+                    this.stopCurrentAnimation();
                     this.isJumping = false;
                     this.isShooting = false;
                     this.startRunning();
@@ -101,11 +103,11 @@ class Hero extends gameObject {
 
     shoot() {
         if (this.isJumping == false && this.isShooting == false) {
-            this.stopRunning();
+            this.stopCurrentAnimation();
             this.startSliceOffset = this.stripeOffset;
             this.isShooting = true;
             this.isJumping = true;
-            this.clearRunInterval = window.setInterval(() => {
+            this.clearAnimateInterval = window.setInterval(() => {
                 this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.shoot + ")";
                 this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
                 if (this.startSliceOffset < this.stripeEnds.shoot) {
@@ -113,13 +115,56 @@ class Hero extends gameObject {
                 }
                 else {
                     this.startSliceOffset = this.stripeOffset;
-                    this.stopRunning();
+                    this.stopCurrentAnimation();
                     this.isShooting = false;
                     this.isJumping = false;
                     this.startRunning();
                 }
             }, this.animateInterval*1.5);
 
+        }
+    }
+    clickHighJump()
+    {
+        if (this.isJumping && !this.highJump && this.topPosition < this.top)
+        {
+            this.stopCurrentAnimation();
+            this.isJumping = true;
+            this.highJump = true;
+            this.isShooting = true;
+            this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.jump + ")";
+            var imageNumber = 0;
+            var distanceFromGround=this.top-this.topPosition;
+            console.log(distanceFromGround);
+
+            this.startSliceOffset = this.stripeOffset;
+            this.clearAnimateInterval = window.setInterval(() => {
+                this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
+                if (this.startSliceOffset < this.stripeEnds.jump) {
+                    this.startSliceOffset = this.startSliceOffset + this.stripeOffset;
+                    imageNumber++;
+                    if (imageNumber <= 5) {
+                        this.topPosition -= 40;
+                        distanceFromGround+=40;
+                        this.heroCharacter.style.top = this.topPosition + "px";
+                    }
+                    else {
+                        this.topPosition += (distanceFromGround/4);
+                        this.heroCharacter.style.top = this.topPosition + "px";
+                    }
+                }
+                else {
+                    this.startSliceOffset = this.stripeOffset;
+                    imageNumber = 0;
+                    this.topPosition = this.top;
+                    this.heroCharacter.style.top = this.topPosition + "px";
+                    this.stopCurrentAnimation();
+                    this.highJump = false;
+                    this.isJumping = false;
+                    this.isShooting = false;
+                    this.startRunning();
+                }
+            }, this.animateInterval);
         }
     }
 }
@@ -133,10 +178,26 @@ console.log(x.run);
 var hero = new Hero(70, x, 300, 0, { run: 2400, jump:3000, shoot: 900  }, document.getElementById("hero"))
 hero.startRunning();
 window.onkeydown = function (event) {
-    if (event.keyCode == 32) {
+    // if (event.keyCode == 32) {
+    //     hero.startJumping();
+    // }
+    // else if (event.keyCode == 13) {
+    //     hero.shoot();
+    // }
+    switch(event.keyCode)
+    {
+        case 32: // space
         hero.startJumping();
-    }
-    else if (event.keyCode == 13) {
+        break;
+        case 13: // enter
         hero.shoot();
+        break;
+        case 38: // up arrow
+        hero.clickHighJump();
+        break;
+        default:
+        break;
     }
 }
+
+// document.getElementsByTagName("body")[0].addEventListener("click",hero.clickHighJump);
