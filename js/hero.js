@@ -174,12 +174,8 @@ class Hero extends gameObject {
     updateGame()
     {
         for (let index = 0; index < generatedObjects.length; index++) {
-           if(this.crash(generatedObjects[index]))
-           {
-               
-           }
-            
-        }
+            this.crash(generatedObjects[index])
+            }
     }
     crash(objectHit)
     {
