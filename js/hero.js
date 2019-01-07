@@ -1,4 +1,3 @@
-
 class gameObject {
     constructor(animateInterval, stripeURLs, stripeOffset, startSliceOffset, stripeEnds) {
         this.animateInterval = animateInterval;
@@ -8,8 +7,9 @@ class gameObject {
         this.stripeEnds = stripeEnds;
     }
 }
- //roadTop 260px
-class Hero extends gameObject {
+
+//roadTop 260px
+class Hero extends gameObject {    
     constructor(animateInterval, stripeURLs, stripeOffset, startSliceOffset, stripeEnds, heroCharacter) {
         super(animateInterval, stripeURLs, stripeOffset, startSliceOffset, stripeEnds);
         this.clearAnimateInterval;
@@ -33,6 +33,7 @@ class Hero extends gameObject {
     }
     startRunning() //stripeOffset,startSliceOffset,animateInterval,
     {
+        {
         // if(this.firstRun)
         // {
         //     heroCharacter.style.backgroundImage = "url("+this.stripeURLs.idle+")";
@@ -54,6 +55,7 @@ class Hero extends gameObject {
         // {
         // debugger;
         // console.log(this.stripeURLs);
+        }
         this.clearAnimateInterval = window.setInterval(() => {
             this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.run + ")";
             this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
@@ -192,7 +194,7 @@ class Hero extends gameObject {
             }, this.animateInterval *1.25);
     }
 
-    crash(object)
+    // crash(object)
     updateGame()
     {
         for (let index = 0; index < generatedObjects.length; index++) {
@@ -236,7 +238,7 @@ class Hero extends gameObject {
             },this.animateInterval);
             startRunning();
         }
-             //#endregion
+            //  #endregion
     }
     updateLives(extraLife)
     {
@@ -264,25 +266,21 @@ class Hero extends gameObject {
     {
 
     }
-}
+ }
 var x = {
     run: 'images/Run-Stripe.png',
     idle: 'images/idle.png',
     jump: 'images/jump.png',
-    shoot: 'images/shoot-Stripe.png',
-    deadSprite: 'images/dead2.png',
+    shoot: 'images/Shoot-Stripe.png',
+    deadSprite: 'images/dead.png',
     dead: 'images/dead2.png'
 };
 console.log(x.run);
+// (animateInterval, stripeURLs, stripeOffset, startSliceOffset, stripeEnds, heroCharacter)
 var hero = new Hero(70, x, 300, 0, { run: 2400, jump:3000, shoot: 900, dead: 3000  }, document.getElementById("hero"))
 hero.startRunning();
+
 window.onkeydown = function (event) {
-    // if (event.keyCode == 32) {
-    //     hero.startJumping();
-    // }
-    // else if (event.keyCode == 13) {
-    //     hero.shoot();
-    // }
     switch(event.keyCode)
     {
         case 32: // space

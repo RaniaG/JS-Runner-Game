@@ -142,8 +142,7 @@ body {
   width: 300px;
   /* background: url("Run-Stripe.png") 0px 0px; */
   position: absolute;
-  left: -50px;
-  background-repeat: no-repeat; }
+  left: -50px; }
 
 .icon {
   width: 40px;
