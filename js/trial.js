@@ -1,7 +1,7 @@
 container = document.querySelector(".notathing");
 
 
-
+hero.animateInterval=50;
 
 
 var e2 = new Enemy(roadTop);
@@ -32,7 +32,7 @@ e2.animate();
 //             heroboundingrect.bottom > enemyboundingrect.bottom )
 //             )
 //             reason = "died while jumping";
-            
+
 //     }
 //     else{
 //         checkOverlap = !(heroboundingrect.right < enemyboundingrect.left + 110)
@@ -53,17 +53,24 @@ interval = window.setInterval(() => {
     // debugger;
     var heroboundingrect = hero.heroCharacter.getBoundingClientRect();
     var enemyboundingrect = e2.div.getBoundingClientRect();
-    var overlapped = false ;
+    var overlapped = false;
     var reason;
-    console.log(heroboundingrect.right, enemyboundingrect.left);
-    if(!(heroboundingrect.right < enemyboundingrect.left + 110)){
-        if(hero.isJumping){
-            overlapped=false;
-            reason="jumping"
+    
+    if ((heroboundingrect.right > enemyboundingrect.left + 110)&& heroboundingrect.left+50 < enemyboundingrect.left ) {
+        if (hero.isJumping) {
+            if ((heroboundingrect.bottom > enemyboundingrect.bottom && heroboundingrect.bottom <= enemyboundingrect.top)) {
+                console.log(heroboundingrect.bottom, enemyboundingrect.top);
+                overlapped = true;
+                reason = "jumping"
+            }
+            else {
+                overlapped = false;
+            }
         }
-        else
-            overlapped=true;
-            reason="not jumping"
+        else {
+            overlapped = true;
+            reason = "not jumping"
+        }
     }
 
     if (overlapped) {
