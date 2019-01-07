@@ -171,6 +171,16 @@ class Hero extends gameObject {
             }, this.animateInterval);
         }
     }
+    updateGame()
+    {
+        for (let index = 0; index < generatedObjects.length; index++) {
+           if(this.crash(generatedObjects[index]))
+           {
+               
+           }
+            
+        }
+    }
     crash(objectHit)
     {
         this.currentTopPos = this.heroCharacter.getBoundingClientRect().top;
