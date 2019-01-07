@@ -25,13 +25,13 @@ class Hero extends gameObject {
         this.lives = 3;
         this.coins = 0;
         this.milage = 0;
+        this.gameOver = false;
     }
     stopCurrentAnimation() {
         window.clearInterval(this.clearAnimateInterval);
     }
     startRunning() //stripeOffset,startSliceOffset,animateInterval,
     {
-        // this.heroCharacter ;
         // if(this.firstRun)
         // {
         //     heroCharacter.style.backgroundImage = "url("+this.stripeURLs.idle+")";
@@ -177,11 +177,40 @@ class Hero extends gameObject {
             //if coin
         //if obstacle
             //if to end game
-            // if to reduce lives 
+            // if to reduce lives
+            if(this.heroCharacter.)
+             //#region inne Condition of crash boundaries
+        if(object.classList.contains("collectable--heart"))
+        {
+            updateLives(true);
+        }
+        else if(object.classList.contains("obstacle--cactus--1") || object.classList.contains("obstacle--cactus--2")
+        || object.classList.contains("obstacle--rock--1") || object.classList.contains("obstacle--rock--5") )
+        {
+            updateLives(false);
+            stopCurrentAnimation();
+            this.startSliceOffset = this.stripeOffset;
+            this.clearAnimateInterval = window.setInterval(() => {
+                this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.dead + ")";
+                this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
+            },this.animateInterval);
+            startRunning();
+        }
+             //#endregion
     }
-    updateLives()
+    updateLives(extraLife)
     {
-
+        //is extraLife true then add one else --
+        var lives = document.getElementsByClassName("icon--heart")[0];
+        if(extraLife)
+        {
+            this.lives ++;      
+        }
+        else
+        {
+            this.lives--;
+        }
+        lives.nextElementSibling.innerHTML = "x"+this.lives;
     }
     updateCoins()
     {
@@ -200,7 +229,8 @@ var x = {
     run: 'images/Run-Stripe.png',
     idle: 'images/idle.png',
     jump: 'images/jump.png',
-    shoot: 'images/shoot-Stripe.png'
+    shoot: 'images/shoot-Stripe.png',
+    dead: 'images/dead2.png'
 };
 console.log(x.run);
 var hero = new Hero(70, x, 300, 0, { run: 2400, jump:3000, shoot: 900  }, document.getElementById("hero"))
@@ -224,8 +254,10 @@ window.onkeydown = function (event) {
         hero.clickHighJump();
         break;
         default:
+        // left 37 in case fast forward
+        // esc 27 in case pause
         break;
     }
 }
-
+hero.updateLives(true);
 // document.getElementsByTagName("body")[0].addEventListener("click",hero.clickHighJump);
