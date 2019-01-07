@@ -1,18 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Generation{
     constructor(){
         this.obstacleGenerationTime = 1000;
