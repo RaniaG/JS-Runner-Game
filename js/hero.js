@@ -127,6 +127,7 @@ class Hero extends gameObject {
 
         }
     }
+
     clickHighJump()
     {
         if (this.isJumping && !this.highJump && this.topPosition < this.top)
@@ -170,6 +171,26 @@ class Hero extends gameObject {
             }, this.animateInterval);
         }
     }
+
+    dead(){
+        this.stopCurrentAnimation();
+            this.startSliceOffset = this.stripeOffset;
+            this.isShooting = true;
+            this.isJumping = true;
+            this.highJump = true;
+            this.clearAnimateInterval = window.setInterval(() => {
+                this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.dead + ")";
+                this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
+                this.heroCharacter.style.top = this.top+"px";
+                if (this.startSliceOffset < this.stripeEnds.dead - this.stripeOffset) {
+                    this.startSliceOffset = this.startSliceOffset + this.stripeOffset;
+                }
+                else {
+                    this.stopCurrentAnimation();  
+                }
+            }, this.animateInterval *1.25);
+    }
+
     crash(object)
     {
         //if collectable
@@ -200,10 +221,11 @@ var x = {
     run: 'images/Run-Stripe.png',
     idle: 'images/idle.png',
     jump: 'images/jump.png',
-    shoot: 'images/shoot-Stripe.png'
+    shoot: 'images/shoot-Stripe.png',
+    dead: 'images/dead.png'
 };
 console.log(x.run);
-var hero = new Hero(70, x, 300, 0, { run: 2400, jump:3000, shoot: 900  }, document.getElementById("hero"))
+var hero = new Hero(70, x, 300, 0, { run: 2400, jump:3000, shoot: 900, dead: 3000  }, document.getElementById("hero"))
 hero.startRunning();
 window.onkeydown = function (event) {
     // if (event.keyCode == 32) {
