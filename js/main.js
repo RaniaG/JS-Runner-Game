@@ -1,43 +1,40 @@
-// var stars = document.querySelector(".bg__starts");
-// var clouds = document.querySelector(".bg__clouds");
-// var mountaines = document.querySelector(".bg__mountaines");
-// var ground = document.querySelector(".bg__ground");
+var container=document.querySelector(".bg");
+var roadTop='550px';
 
 
-// // /*----------------------------------------BGclass-------------------------------------------------------*/
+function destroy(obj){
+    // console.log(obj);
+    if(obj!=null&&container.contains(obj.div))
+       { 
+           container.removeChild(obj.div);
+            obj=null;
+    }
+}
 
-
-// class Background {
-//     constructor(layer, time, bgpos, distance) {
-//         this.layer = layer;
-//         this.time = time;
-//         this.bgpos = bgpos;
-//         this.distance = distance;
-//     }
-//     slideBackground() {
-//         this.bgpos -= this.distance; 
-//         this.layer.style.backgroundPosition = this.bgpos + 'px 0';
-//     }
-
-
-// }
-// let star = new Background(stars, 7, 1366,2);
-// setInterval(() => star.slideBackground(), 7);
-// let cloud = new Background(clouds, 5, 1366,2);
-// setInterval(() => cloud.slideBackground(), 5);
-// let mountain = new Background(mountaines, 3, 1366,2);
-// setInterval(() => mountain.slideBackground(), 5);
-// let groundl = new Background(ground, 1, 1366,5);
-// setInterval(() => groundl.slideBackground(), 5);
-
-
-
-// /*----------------------------------------EndOFBGclass-------------------------------------------------------*/
-
-
-
-
-
-
+function pauseAnimation(obj){
+    obj.style.animationPlayState='paused';
+}
+function replayAnimation(obj){
+    obj.style.animationPlayState='running';
+}
+/**************************************** MOVING OBJECT CLASS ********************************************************************* */
+class MovingObject{
+    constructor(y,w,h){
+        this.y=y;
+        this.div=document.createElement("div");
+        this.width=w;
+        this.height=h;
+        this.timeOut=2; //second
+        this.timeOfAppearance;
+    }
+    animate(){
+        setTimeout(destroy,parseInt(this.timeOut)*1000,this);
+        // console.log("animation");
+    } 
+    draw(){
+        // console.log("draw");
+    }  
+}
+/*********************************************************************************************************************************** */
 
 
