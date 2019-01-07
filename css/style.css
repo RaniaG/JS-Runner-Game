@@ -142,7 +142,8 @@ body {
   width: 300px;
   /* background: url("Run-Stripe.png") 0px 0px; */
   position: absolute;
-  left: -50px; }
+  left: -50px;
+  background-repeat: no-repeat; }
 
 .icon {
   width: 40px;
@@ -150,7 +151,8 @@ body {
   left: 5px;
   position: absolute;
   background-size: contain;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  display: inline-block; }
   .icon--heart {
     background-image: url("../images/heart.png");
     top: 41px; }

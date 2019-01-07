@@ -6,6 +6,7 @@
     position: absolute;
     background-size:contain; 
     background-repeat: no-repeat;
+    display: inline-block;
     &--heart{
         background-image: url("../images/heart.png");
         top:41px;
