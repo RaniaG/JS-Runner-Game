@@ -1,7 +1,7 @@
 container = document.querySelector(".notathing");
 
 
-hero.animateInterval=50;
+// hero.animateInterval=30;
 
 
 var e2 = new Enemy(roadTop);
@@ -12,12 +12,21 @@ interval = window.setInterval(() => {
     // debugger;
     var heroboundingrect = hero.heroCharacter.getBoundingClientRect();
     var enemyboundingrect = e2.div.getBoundingClientRect();
-    var overlapped = false;
+    var overlappedHorizontal = (
+        (heroboundingrect.right == enemyboundingrect.left + 110 && heroboundingrect.left < enemyboundingrect.left) ||
+        (heroboundingrect.right >= enemyboundingrect.left + 110 && heroboundingrect.right <= enemyboundingrect.right + 110 && heroboundingrect.left+50 <= enemyboundingrect.left) ||
+        (heroboundingrect.right > enemyboundingrect.right + 110 && heroboundingrect.left+50 <= enemyboundingrect.right && heroboundingrect.left+50 > enemyboundingrect.left)
+        );
+    var overlappedVertical = (
+        heroboundingrect.bottom < enemyboundingrect.bottom &&
+        heroboundingrect.bottom >= enemyboundingrect.top
+    );
     var reason;
+    var overlapped;
     
-    if ((heroboundingrect.right > enemyboundingrect.left + 110)&& heroboundingrect.left+50 < enemyboundingrect.left ) {
+    if (overlappedHorizontal) {
         if (hero.isJumping) {
-            if ((heroboundingrect.bottom > enemyboundingrect.bottom && heroboundingrect.bottom <= enemyboundingrect.top)) {
+            if (overlappedVertical) {
                 console.log(heroboundingrect.bottom, enemyboundingrect.top);
                 overlapped = true;
                 reason = "jumping"
@@ -31,6 +40,9 @@ interval = window.setInterval(() => {
             reason = "not jumping"
         }
     }
+    else if(hero.shoots){
+        destroy(e2);
+    }
 
     if (overlapped) {
         console.log("overlapped " + reason);
@@ -43,7 +55,3 @@ interval = window.setInterval(() => {
 }, 50);
 
 
-
-
-
-// Explain: if one or more expressions in the parenthese are true, there's no overlapping. If all are false, there must be an overlapping.

@@ -21,6 +21,7 @@ class Hero extends gameObject {
         this.heroCharacter.style.top = this.top+"px";
         this.topPosition = this.top;
         this.isShooting = false;
+        this.shoots = false;
         this.highJump = false;
         this.lives = 3;
         this.coins = 0;
@@ -112,6 +113,7 @@ class Hero extends gameObject {
             this.stopCurrentAnimation();
             this.startSliceOffset = this.stripeOffset;
             this.isShooting = true;
+            this.shoots=true;
             this.isJumping = true;
             this.clearAnimateInterval = window.setInterval(() => {
                 this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.shoot + ")";
@@ -123,10 +125,11 @@ class Hero extends gameObject {
                     this.startSliceOffset = this.stripeOffset;
                     this.stopCurrentAnimation();
                     this.isShooting = false;
+                    this.shoots = false;
                     this.isJumping = false;
                     this.startRunning();
                 }
-            }, this.animateInterval*1.5);
+            }, this.animateInterval*0.5);
 
         }
     }
@@ -189,7 +192,7 @@ class Hero extends gameObject {
                     this.startSliceOffset = this.startSliceOffset + this.stripeOffset;
                 }
                 else {
-                    this.stopCurrentAnimation();  
+                    this.stopCurrentAnimation(); 
                 }
             }, this.animateInterval *1.25);
     }
@@ -238,6 +241,9 @@ class Hero extends gameObject {
             },this.animateInterval);
             startRunning();
         }
+        else if(objectHit.classList.contains("obstacles--enemy")){
+            endGame();
+        }
             //  #endregion
     }
     updateLives(extraLife)
@@ -264,7 +270,8 @@ class Hero extends gameObject {
     }
     endGame()
     {
-
+        hero.dead();
+        this.gameOver = true; 
     }
  }
 var x = {
@@ -276,7 +283,6 @@ var x = {
     dead: 'images/dead2.png'
 };
 console.log(x.run);
-// (animateInterval, stripeURLs, stripeOffset, startSliceOffset, stripeEnds, heroCharacter)
 var hero = new Hero(70, x, 300, 0, { run: 2400, jump:3000, shoot: 900, dead: 3000  }, document.getElementById("hero"))
 hero.startRunning();
 
