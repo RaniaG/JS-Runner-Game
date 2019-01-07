@@ -26,6 +26,7 @@ class Hero extends gameObject {
         this.coins = 0;
         this.milage = 0;
         this.gameOver = false;
+        this.currentTopPos,this.currentBottomPos,this.currentLeftPos,this.currentRightPos;
     }
     stopCurrentAnimation() {
         window.clearInterval(this.clearAnimateInterval);
@@ -170,15 +171,26 @@ class Hero extends gameObject {
             }, this.animateInterval);
         }
     }
-    crash(object)
+    crash(objectHit)
     {
+        this.currentTopPos = this.heroCharacter.getBoundingClientRect().top;
+        this.currentBottomPos = this.currentTopPos + this.heroCharacter.getBoundingClientRect().height;
+        this.currentLeftPos = this.heroCharacter.getBoundingClientRect().left;
+        this.currentrightPos = this.currentLeftPos + this.heroCharacter.getBoundingClientRect().width;
+
+        var objCurrentTopPos,objCurrentBottomPos,objCurrentLeftPos,objCurrentRightPos;
+
+        objCurrentTopPos = objectHit.getBoundingClientRect().top;
+        objCurrentBottomPos = objCurrentTopPos + objectHit.getBoundingClientRect().height;
+        objCurrentLeftPos = objectHit.getBoundingClientRect().left;
+        objCurrentRightPos = objCurrentLeftPos + objectHit.getBoundingClientRect().width;
         //if collectable
             //if heart
             //if coin
         //if obstacle
             //if to end game
             // if to reduce lives
-            if(this.heroCharacter.)
+            // if(this.currentBottomPos > objCurrentTopPos || this.cur < objCurrentTopPos)
              //#region inne Condition of crash boundaries
         if(object.classList.contains("collectable--heart"))
         {
