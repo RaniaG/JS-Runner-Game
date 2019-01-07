@@ -12,8 +12,15 @@
         top:41px;
     }
     &--coin{
-        background-image: url("../images/gold_coin.png");
-        top:81px;
+        // background-image: url("../images/gold_coin.png");
+        &--gold{
+            background-image: url("../images/gold_coin.png");
+            top : 81px;
+        }
+        &--silver{
+            background-image: url("../images/sliver_coin.png");
+            top : 121px;
+        }
     }
     &--run{
         background-image: url("../images/Idle.png");

@@ -24,7 +24,10 @@ class Hero extends gameObject {
         this.shoots = false;
         this.highJump = false;
         this.lives = 3;
-        this.coins = 0;
+        this.coins ={
+            gold: 0,
+            silver: 0
+        };
         this.milage = 0;
         this.gameOver = false;
         this.currentTopPos,this.currentBottomPos,this.currentLeftPos,this.currentRightPos;
@@ -229,8 +232,8 @@ class Hero extends gameObject {
         {
             updateLives(true);
         }
-        else if(object.classList.contains("obstacle--cactus--1") || object.classList.contains("obstacle--cactus--2")
-        || object.classList.contains("obstacle--rock--1") || object.classList.contains("obstacle--rock--5") )
+        else if(objectHit.classList.contains("obstacle--cactus--1") || objectHit.classList.contains("obstacle--cactus--2")
+        || objectHit.classList.contains("obstacle--rock--1") || objectHit.classList.contains("obstacle--rock--5") )
         {
             updateLives(false);
             stopCurrentAnimation();
@@ -243,6 +246,12 @@ class Hero extends gameObject {
         }
         else if(objectHit.classList.contains("obstacles--enemy")){
             endGame();
+        }
+        else if(objectHit.classList.contains("collectable--coin--gold")){
+            updateCoins("gold")
+        }
+        else if(objectHit.classList.contains("collectable--coin--silver")){
+            updateCoins("silver")
         }
             //  #endregion
     }
@@ -260,13 +269,24 @@ class Hero extends gameObject {
         }
         lives.nextElementSibling.innerHTML = "x"+this.lives;
     }
-    updateCoins()
+    updateCoins(type)
     {
+        if(type === "gold"){
+            this.coins.gold ++;
+            document.getElementsByClassName("icon--coin--gold")[0].innerHTML = "x"+this.coins.gold ;
+            updateMilage(500);
+        }
+        else if(type === "silver"){
+            this.coins.silver ++;
+            document.getElementsByClassName("icon--coin--silver")[0].innerHTML = "x"+this.coins.silver ;
+            updateMilage(100);
+        }
 
     }
-    updateMilage()
+    updateMilage(milageIncrease)
     {
-        
+        this.milage += milageIncrease;
+        document.getElementsByClassName("icon--coin--run")[0].innerHTML = "x"+this.milage ;
     }
     endGame()
     {
