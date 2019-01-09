@@ -23,8 +23,8 @@ class Hero extends gameObject {
         this.isShooting = false;
         this.shoots = false;
         this.highJump = false;
-        this.lives = 3;
-        this.coins ={
+        this.lives = 3; //
+        this.coins ={//
             gold: 0,
             silver: 0
         };
@@ -202,12 +202,12 @@ class Hero extends gameObject {
     }
 
     // crash(object)
-    updateGame()
-    {
-        for (let index = 0; index < generatedObjects.length; index++) {
-            this.crash(generatedObjects[index])
-            }
-    }
+    // updateGame() ///
+    // {
+    //     for (let index = 0; index < generatedObjects.length; index++) {
+    //         this.crash(generatedObjects[index])
+    //         }
+    // }
     crash(objectHit)
     {
         var crashReturnObj={crash:false,hit:""};
@@ -281,44 +281,44 @@ class Hero extends gameObject {
         }
             //  #endregion
     }
-    updateLives(extraLife)
-    {
-        //is extraLife true then add one else --
-        var lives = document.getElementsByClassName("icon--heart")[0];
-        if(extraLife)
-        {
-            this.lives ++;      
-        }
-        else
-        {
-            this.lives--;
-        }
-        lives.nextElementSibling.innerHTML = "x"+this.lives;
-    }
-    updateCoins(type)
-    {
-        if(type === "gold"){
-            this.coins.gold ++;
-            document.getElementsByClassName("icon--coin--gold")[0].innerHTML = "x"+this.coins.gold ;
-            updateMilage(500);
-        }
-        else if(type === "silver"){
-            this.coins.silver ++;
-            document.getElementsByClassName("icon--coin--silver")[0].innerHTML = "x"+this.coins.silver ;
-            updateMilage(100);
-        }
+    // updateLives(extraLife) //
+    // {
+    //     //is extraLife true then add one else --
+    //     var lives = document.getElementsByClassName("icon--heart")[0];
+    //     if(extraLife)
+    //     {
+    //         this.lives ++;      
+    //     }
+    //     else
+    //     {
+    //         this.lives--;
+    //     }
+    //     lives.nextElementSibling.innerHTML = "x"+this.lives;
+    // }
+    // updateCoins(type) //
+    // {
+    //     if(type === "gold"){
+    //         this.coins.gold ++;
+    //         document.getElementsByClassName("icon--coin--gold")[0].innerHTML = "x"+this.coins.gold ;
+    //         updateMilage(500);
+    //     }
+    //     else if(type === "silver"){
+    //         this.coins.silver ++;
+    //         document.getElementsByClassName("icon--coin--silver")[0].innerHTML = "x"+this.coins.silver ;
+    //         updateMilage(100);
+    //     }
 
-    }
-    updateMilage(milageIncrease)
-    {
-        this.milage += milageIncrease;
-        document.getElementsByClassName("icon--coin--run")[0].innerHTML = "x"+this.milage ;
-    }
-    endGame()
-    {
-        hero.dead();
-        this.gameOver = true; 
-    }
+    // }
+    // updateMilage(milageIncrease) //
+    // {
+    //     this.milage += milageIncrease;
+    //     document.getElementsByClassName("icon--coin--run")[0].innerHTML = "x"+this.milage ;
+    // }
+    // endGame() //
+    // {
+    //     hero.dead();
+    //     this.gameOver = true; 
+    // }
  }
 var x = {
     run: 'images/Run-Stripe.png',
@@ -350,5 +350,5 @@ window.onkeydown = function (event) {
         break;
     }
 }
-hero.updateLives(true);
+// hero.updateLives(true);
 // document.getElementsByTagName("body")[0].addEventListener("click",hero.clickHighJump);

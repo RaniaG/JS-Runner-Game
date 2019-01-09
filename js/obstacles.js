@@ -35,8 +35,6 @@ class Cactus extends Obstacle{
     constructor(){
         super(150,0.8031*150);
         this.className+=' obstacle--cactus--1';
-        // this.draw();
-        // this.animate();
     }
     draw(){
         super.draw();
@@ -53,9 +51,11 @@ class Enemy extends Obstacle{
         this.className+=' obstacle--enemy';
         // this.draw();
         // this.animate();
+        this.sound=new Sound(4);        
     }
     draw(){
         super.draw();
+        this.sound.play();
         container.appendChild(this.div);
     }
     animate(){
