@@ -243,10 +243,10 @@ class Hero extends gameObject {
         var heroActualTop =currentBoundingBox.top+20;
         var heroActualLeft =(currentBoundingBox.left+50);
         console.log(heroActualTop);
-        possibleHits.push(document.elementsFromPoint(heroActualLeft, (heroActualTop+55))[1]);
-        possibleHits.push(document.elementsFromPoint(heroActualLeft, (heroActualTop+111))[1]);
-        possibleHits.push(document.elementsFromPoint((heroActualLeft+37), heroActualTop)[1]);
-        possibleHits.push(document.elementsFromPoint((heroActualLeft+112), heroActualTop)[1]);
+        possibleHits.push(document.elementsFromPoint(heroActualLeft+75, (heroActualTop+111))[1]);
+        // possibleHits.push(document.elementsFromPoint(heroActualLeft, (heroActualTop+111))[1]);
+        // possibleHits.push(document.elementsFromPoint((heroActualLeft+37), heroActualTop)[1]);
+        // possibleHits.push(document.elementsFromPoint((heroActualLeft+112), heroActualTop)[1]);
         
         console.log(possibleHits)
         console.log((heroActualTop+55));
@@ -263,7 +263,7 @@ class Hero extends gameObject {
             {
                 this.updateLives(false);
             }
-            else if(possibleHits[index].classList.contains("obstacles--enemy")){
+            else if(possibleHits[index].classList.contains("obstacle--enemy")){
                 this.endGame();
             }
             else if(possibleHits[index].classList.contains("collectable--coin--gold")){
