@@ -1,9 +1,13 @@
 class Gamelogic {
     constructor() {
-        this.lives;
-        this.goldCoins;
-        this.silverCoins;
-        this.distance;
+        this.lives=3;
+        this.coins ={
+            gold: 0,
+            silver: 0
+        };
+        this.milage;
+        this.gameOver = false;
+
     }
 
     
@@ -39,12 +43,49 @@ class Gamelogic {
     }
     updateMilage(milageIncrease) {
         this.milage += milageIncrease;
-        document.getElementsByClassName("icon--coin--run")[0].innerHTML = "x" + this.milage;
+        document.getElementsByClassName("icon--run")[0].innerHTML = "x" + this.milage;
     }
 
     endGame() {
         hero.dead();
         this.gameOver = true;
+    }
+
+    updateGame()
+    {
+        var possibleHits;
+        document.elementsFromPoint(250);
+        //to be continue ....
+        var index=0;
+        var crash=false;
+        do {
+            crash = hero.crash(possibleHits[index]);
+            if(crash)
+            {
+                /// to be in game class 
+                if(possibleHits[index].classList.contains("collectable--heart"))
+                {
+                    updateLives(true);
+                }
+                else if(possibleHits[index].classList.contains("obstacle--cactus--1") || possibleHits[index].classList.contains("obstacle--cactus--2")
+                || possibleHits[index].classList.contains("obstacle--rock--1") || possibleHits[index].classList.contains("obstacle--rock--5")
+                || possibleHits[index].classList.contains("obstacle--rock--2") || possibleHits[index].classList.contains("obstacle--rock--3")
+                || possibleHits[index].classList.contains("obstacle--rock--4")  )
+                {
+                    updateLives(false);
+                }
+                else if(possibleHits[index].classList.contains("obstacles--enemy")){
+                    endGame();
+                }
+                else if(possibleHits[index].classList.contains("collectable--coin--gold")){
+                    updateCoins("gold")
+                }
+                else if(possibleHits[index].classList.contains("collectable--coin--silver")){
+                    updateCoins("silver")
+                }
+                    }
+        } while (!crash);
+
     }
 }
 hero.updateLives(true);

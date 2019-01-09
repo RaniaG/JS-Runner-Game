@@ -23,13 +23,13 @@ class Hero extends gameObject {
         this.isShooting = false;
         this.shoots = false;
         this.highJump = false;
-        this.lives = 3; //
-        this.coins ={//
-            gold: 0,
-            silver: 0
-        };
-        this.milage = 0;
-        this.gameOver = false;
+        // this.lives = 3; //
+        // this.coins ={//
+        //     gold: 0,
+        //     silver: 0
+        // };
+        // this.milage = 0;
+        // this.gameOver = false;
         this.currentBoundingBox = this.heroCharacter.getBoundingClientRect();
         // this.currentTopPos,this.currentBottomPos,this.currentLeftPos,this.currentRightPos;
     }
@@ -210,7 +210,7 @@ class Hero extends gameObject {
     // }
     crash(objectHit)
     {
-        var crashReturnObj={crash:false,hit:""};
+        var crashReturn = false;
         // this.currentTopPos = this.heroCharacter.getBoundingClientRect().top;
         // this.currentBottomPos = this.heroCharacter.getBoundingClientRect().bottom;
         // this.currentLeftPos = this.heroCharacter.getBoundingClientRect().left;
@@ -245,40 +245,15 @@ class Hero extends gameObject {
                 if (this.isJumping) {
                     if (overlappedVertical) {
                         //console.log(heroboundingrect.bottom, crashedboundingrect.top);
-                        crashReturnObj.crash = true;
+                        crashReturn = true;
                     }
                 }
                 else{
-                crashReturnObj.crash = true;
+                crashReturn = true;
                 }
             }
-            
-/// to be in game class 
-        if(objectHit.classList.contains("collectable--heart"))
-        {
-            updateLives(true);
-        }
-        else if(objectHit.classList.contains("obstacle--cactus--1") || objectHit.classList.contains("obstacle--cactus--2")
-        || objectHit.classList.contains("obstacle--rock--1") || objectHit.classList.contains("obstacle--rock--5")|| objectHit.classList.contains("obstacle--rock--2") || objectHit.classList.contains("obstacle--rock--3") || objectHit.classList.contains("obstacle--rock--4")  )
-        {
-            updateLives(false);
-            stopCurrentAnimation();
-            this.startSliceOffset = this.stripeOffset;
-            this.clearAnimateInterval = window.setInterval(() => {
-                this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.dead + ")";
-                this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
-            },this.animateInterval);
-            startRunning();
-        }
-        else if(objectHit.classList.contains("obstacles--enemy")){
-            endGame();
-        }
-        else if(objectHit.classList.contains("collectable--coin--gold")){
-            updateCoins("gold")
-        }
-        else if(objectHit.classList.contains("collectable--coin--silver")){
-            updateCoins("silver")
-        }
+            return crashReturn;
+
             //  #endregion
     }
     // updateLives(extraLife) //
