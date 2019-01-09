@@ -23,14 +23,18 @@ class Hero extends gameObject {
         this.isShooting = false;
         this.shoots = false;
         this.highJump = false;
-        // this.lives = 3; //
-        // this.coins ={//
-        //     gold: 0,
-        //     silver: 0
-        // };
-        // this.milage = 0;
-        // this.gameOver = false;
-        this.currentBoundingBox = this.heroCharacter.getBoundingClientRect();
+        this.lives = 3; //
+        this.coins ={//
+            gold: 0,
+            silver: 0
+        };
+        this.milage = 0;
+        this.gameOver = false;
+        // this.currentBoundingBox = this.heroCharacter.getBoundingClientRect();
+        // console.log(this.currentBoundingBox.top);
+        // this.heroActualTop =isNaN(this.currentBoundingBox.top+20);
+        // this.heroActualLeft =(this.currentBoundingBox.left+50);
+        // console.log(this.heroActualTop);
         // this.currentTopPos,this.currentBottomPos,this.currentLeftPos,this.currentRightPos;
     }
     stopCurrentAnimation() {
@@ -208,7 +212,7 @@ class Hero extends gameObject {
     //         this.crash(generatedObjects[index])
     //         }
     // }
-    crash(objectHit)
+    crash()
     {
         var crashReturn = false;
         // this.currentTopPos = this.heroCharacter.getBoundingClientRect().top;
@@ -217,7 +221,9 @@ class Hero extends gameObject {
         // this.currentrightPos = this.currentLeftPos + this.heroCharacter.getBoundingClientRect().width;
 
         // var objCurrentTopPos,objCurrentBottomPos,objCurrentLeftPos,objCurrentRightPos;
-        var objCurrentBoundingBox = objectHit.getBoundingClientRect();
+
+        // var objCurrentBoundingBox = objectHit.getBoundingClientRect();
+
         // objCurrentTopPos = objectHit.getBoundingClientRect().top;
         // objCurrentBottomPos = objCurrentTopPos + objectHit.getBoundingClientRect().height;
         // objCurrentLeftPos = objectHit.getBoundingClientRect().left;
@@ -229,71 +235,109 @@ class Hero extends gameObject {
             //if to end game
             // if to reduce lives
             // if(this.currentBottomPos > objCurrentTopPos || this.cur < objCurrentTopPos)
-             //#region inne Condition of crash boundaries
+             //#region inne Condition of crash boundaries0
+        var possibleHits=[];
+        console.log(this.heroCharacter);
+        var currentBoundingBox = this.heroCharacter.getBoundingClientRect();
+        console.log(currentBoundingBox.top);
+        var heroActualTop =currentBoundingBox.top+20;
+        var heroActualLeft =(currentBoundingBox.left+50);
+        console.log(heroActualTop);
+        possibleHits.push(document.elementsFromPoint(heroActualLeft, (heroActualTop+55))[1]);
+        possibleHits.push(document.elementsFromPoint(heroActualLeft, (heroActualTop+111))[1]);
+        possibleHits.push(document.elementsFromPoint((heroActualLeft+37), heroActualTop)[1]);
+        possibleHits.push(document.elementsFromPoint((heroActualLeft+112), heroActualTop)[1]);
+        
+        console.log(possibleHits)
+        console.log((heroActualTop+55));
 
-             var overlappedHorizontal = (
-                // (this.currentBoundingBox.right == objCurrentBoundingBox.left + 110 && this.currentBoundingBox.left < objCurrentBoundingBox.left) ||
-                (this.currentBoundingBox.right >= objCurrentBoundingBox.left + 110 && this.currentBoundingBox.right <= objCurrentBoundingBox.right + 110 && this.currentBoundingBox.left+50 <= objCurrentBoundingBox.left) ||
-                (this.currentBoundingBox.right > objCurrentBoundingBox.right + 110 && this.currentBoundingBox.left+50 <= objCurrentBoundingBox.right && this.currentBoundingBox.left+50 > objCurrentBoundingBox.left)
-                );
-            var overlappedVertical = (
-                this.currentBoundingBox.bottom < objCurrentBoundingBox.bottom && this.currentBoundingBox.bottom >= objCurrentBoundingBox.top ||
-                this.currentBoundingBox.top > objCurrentBoundingBox.top && this.currentBoundingBox.top <= objCurrentBoundingBox.bottom
-            );
-
-            if (overlappedHorizontal) {
-                if (this.isJumping) {
-                    if (overlappedVertical) {
-                        //console.log(heroboundingrect.bottom, crashedboundingrect.top);
-                        crashReturn = true;
-                    }
-                }
-                else{
-                crashReturn = true;
-                }
+        for (let index = 0; index < possibleHits.length; index++) {
+            if(possibleHits[index].classList.contains("collectable--heart"))
+            {
+                this.updateLives(true);
             }
-            return crashReturn;
+            else if(possibleHits[index].classList.contains("obstacle--cactus--1") || possibleHits[index].classList.contains("obstacle--cactus--2")
+            || possibleHits[index].classList.contains("obstacle--rock--1") || possibleHits[index].classList.contains("obstacle--rock--5")
+            || possibleHits[index].classList.contains("obstacle--rock--2") || possibleHits[index].classList.contains("obstacle--rock--3")
+            || possibleHits[index].classList.contains("obstacle--rock--4")  )
+            {
+                this.updateLives(false);
+            }
+            else if(possibleHits[index].classList.contains("obstacles--enemy")){
+                this.endGame();
+            }
+            else if(possibleHits[index].classList.contains("collectable--coin--gold")){
+                this.updateCoins("gold")
+            }
+            else if(possibleHits[index].classList.contains("collectable--coin--silver")){
+                this.updateCoins("silver")
+            }
+            
+        }
+
+            //  var overlappedHorizontal = (
+            //     // (this.currentBoundingBox.right == objCurrentBoundingBox.left + 110 && this.currentBoundingBox.left < objCurrentBoundingBox.left) ||
+            //     (this.currentBoundingBox.right >= objCurrentBoundingBox.left + 110 && this.currentBoundingBox.right <= objCurrentBoundingBox.right + 110 && this.currentBoundingBox.left+50 <= objCurrentBoundingBox.left) ||
+            //     (this.currentBoundingBox.right > objCurrentBoundingBox.right + 110 && this.currentBoundingBox.left+50 <= objCurrentBoundingBox.right && this.currentBoundingBox.left+50 > objCurrentBoundingBox.left)
+            //     );
+            // var overlappedVertical = (
+            //     this.currentBoundingBox.bottom < objCurrentBoundingBox.bottom && this.currentBoundingBox.bottom >= objCurrentBoundingBox.top ||
+            //     this.currentBoundingBox.top > objCurrentBoundingBox.top && this.currentBoundingBox.top <= objCurrentBoundingBox.bottom
+            // );
+
+            // if (overlappedHorizontal) {
+            //     if (this.isJumping) {
+            //         if (overlappedVertical) {
+            //             //console.log(heroboundingrect.bottom, crashedboundingrect.top);
+            //             crashReturn = true;
+            //         }
+            //     }
+            //     else{
+            //     crashReturn = true;
+            //     }
+            // }
+            // return crashReturn;
 
             //  #endregion
     }
-    // updateLives(extraLife) //
-    // {
-    //     //is extraLife true then add one else --
-    //     var lives = document.getElementsByClassName("icon--heart")[0];
-    //     if(extraLife)
-    //     {
-    //         this.lives ++;      
-    //     }
-    //     else
-    //     {
-    //         this.lives--;
-    //     }
-    //     lives.nextElementSibling.innerHTML = "x"+this.lives;
-    // }
-    // updateCoins(type) //
-    // {
-    //     if(type === "gold"){
-    //         this.coins.gold ++;
-    //         document.getElementsByClassName("icon--coin--gold")[0].innerHTML = "x"+this.coins.gold ;
-    //         updateMilage(500);
-    //     }
-    //     else if(type === "silver"){
-    //         this.coins.silver ++;
-    //         document.getElementsByClassName("icon--coin--silver")[0].innerHTML = "x"+this.coins.silver ;
-    //         updateMilage(100);
-    //     }
+    updateLives(extraLife) //
+    {
+        //is extraLife true then add one else --
+        var lives = document.getElementsByClassName("icon--heart")[0];
+        if(extraLife)
+        {
+            this.lives ++;      
+        }
+        else
+        {
+            this.lives--;
+        }
+        lives.nextElementSibling.innerHTML = "x"+this.lives;
+    }
+    updateCoins(type) //
+    {
+        if(type === "gold"){
+            this.coins.gold ++;
+            document.getElementsByClassName("icon--coin--gold")[0].innerHTML = "x"+this.coins.gold ;
+            this.updateMilage(500);
+        }
+        else if(type === "silver"){
+            this.coins.silver ++;
+            document.getElementsByClassName("icon--coin--silver")[0].innerHTML = "x"+this.coins.silver ;
+            this.updateMilage(100);
+        }
 
-    // }
-    // updateMilage(milageIncrease) //
-    // {
-    //     this.milage += milageIncrease;
-    //     document.getElementsByClassName("icon--coin--run")[0].innerHTML = "x"+this.milage ;
-    // }
-    // endGame() //
-    // {
-    //     hero.dead();
-    //     this.gameOver = true; 
-    // }
+    }
+    updateMilage(milageIncrease) //
+    {
+        this.milage += milageIncrease;
+        document.getElementsByClassName("icon--coin--run")[0].innerHTML = "x"+this.milage ;
+    }
+    endGame() //
+    {
+        this.dead();
+        this.gameOver = true; 
+    }
  }
 var x = {
     run: 'images/Run-Stripe.png',
@@ -326,4 +370,7 @@ window.onkeydown = function (event) {
     }
 }
 // hero.updateLives(true);
+setInterval(function(){
+    hero.crash();
+},50)
 // document.getElementsByTagName("body")[0].addEventListener("click",hero.clickHighJump);
