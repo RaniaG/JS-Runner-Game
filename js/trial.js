@@ -11,15 +11,15 @@ e2.animate();
 interval = window.setInterval(() => {
     // debugger;
     var heroboundingrect = hero.heroCharacter.getBoundingClientRect();
-    var enemyboundingrect = e2.div.getBoundingClientRect();
+    var crashedboundingrect = e2.div.getBoundingClientRect();
     var overlappedHorizontal = (
-        (heroboundingrect.right == enemyboundingrect.left + 110 && heroboundingrect.left < enemyboundingrect.left) ||
-        (heroboundingrect.right >= enemyboundingrect.left + 110 && heroboundingrect.right <= enemyboundingrect.right + 110 && heroboundingrect.left+50 <= enemyboundingrect.left) ||
-        (heroboundingrect.right > enemyboundingrect.right + 110 && heroboundingrect.left+50 <= enemyboundingrect.right && heroboundingrect.left+50 > enemyboundingrect.left)
+        // (heroboundingrect.right == crashedboundingrect.left + 110 && heroboundingrect.left < crashedboundingrect.left) ||
+        (heroboundingrect.right >= crashedboundingrect.left + 110 && heroboundingrect.right <= crashedboundingrect.right + 110 && heroboundingrect.left+50 <= crashedboundingrect.left) ||
+        (heroboundingrect.right > crashedboundingrect.right + 110 && heroboundingrect.left+50 <= crashedboundingrect.right && heroboundingrect.left+50 > crashedboundingrect.left)
         );
     var overlappedVertical = (
-        heroboundingrect.bottom < enemyboundingrect.bottom &&
-        heroboundingrect.bottom >= enemyboundingrect.top
+        heroboundingrect.bottom < crashedboundingrect.bottom && heroboundingrect.bottom >= crashedboundingrect.top ||
+        heroboundingrect.top > crashedboundingrect.top && heroboundingrect.top <= crashedboundingrect.bottom
     );
     var reason;
     var overlapped;
@@ -27,7 +27,7 @@ interval = window.setInterval(() => {
     if (overlappedHorizontal) {
         if (hero.isJumping) {
             if (overlappedVertical) {
-                console.log(heroboundingrect.bottom, enemyboundingrect.top);
+                console.log(heroboundingrect.bottom, crashedboundingrect.top);
                 overlapped = true;
                 reason = "jumping"
             }

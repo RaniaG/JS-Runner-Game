@@ -30,7 +30,8 @@ class Hero extends gameObject {
         };
         this.milage = 0;
         this.gameOver = false;
-        this.currentTopPos,this.currentBottomPos,this.currentLeftPos,this.currentRightPos;
+        this.currentBoundingBox = this.heroCharacter.getBoundingClientRect();
+        // this.currentTopPos,this.currentBottomPos,this.currentLeftPos,this.currentRightPos;
     }
     stopCurrentAnimation() {
         window.clearInterval(this.clearAnimateInterval);
@@ -209,17 +210,18 @@ class Hero extends gameObject {
     }
     crash(objectHit)
     {
-        this.currentTopPos = this.heroCharacter.getBoundingClientRect().top;
-        this.currentBottomPos = this.currentTopPos + this.heroCharacter.getBoundingClientRect().height;
-        this.currentLeftPos = this.heroCharacter.getBoundingClientRect().left;
-        this.currentrightPos = this.currentLeftPos + this.heroCharacter.getBoundingClientRect().width;
+        var crashReturnObj={crash:false,hit:""};
+        // this.currentTopPos = this.heroCharacter.getBoundingClientRect().top;
+        // this.currentBottomPos = this.heroCharacter.getBoundingClientRect().bottom;
+        // this.currentLeftPos = this.heroCharacter.getBoundingClientRect().left;
+        // this.currentrightPos = this.currentLeftPos + this.heroCharacter.getBoundingClientRect().width;
 
-        var objCurrentTopPos,objCurrentBottomPos,objCurrentLeftPos,objCurrentRightPos;
-
-        objCurrentTopPos = objectHit.getBoundingClientRect().top;
-        objCurrentBottomPos = objCurrentTopPos + objectHit.getBoundingClientRect().height;
-        objCurrentLeftPos = objectHit.getBoundingClientRect().left;
-        objCurrentRightPos = objCurrentLeftPos + objectHit.getBoundingClientRect().width;
+        // var objCurrentTopPos,objCurrentBottomPos,objCurrentLeftPos,objCurrentRightPos;
+        var objCurrentBoundingBox = objectHit.getBoundingClientRect();
+        // objCurrentTopPos = objectHit.getBoundingClientRect().top;
+        // objCurrentBottomPos = objCurrentTopPos + objectHit.getBoundingClientRect().height;
+        // objCurrentLeftPos = objectHit.getBoundingClientRect().left;
+        // objCurrentRightPos = objCurrentLeftPos + objectHit.getBoundingClientRect().width;
         //if collectable
             //if heart
             //if coin
@@ -228,12 +230,36 @@ class Hero extends gameObject {
             // if to reduce lives
             // if(this.currentBottomPos > objCurrentTopPos || this.cur < objCurrentTopPos)
              //#region inne Condition of crash boundaries
-        if(object.classList.contains("collectable--heart"))
+
+             var overlappedHorizontal = (
+                // (this.currentBoundingBox.right == objCurrentBoundingBox.left + 110 && this.currentBoundingBox.left < objCurrentBoundingBox.left) ||
+                (this.currentBoundingBox.right >= objCurrentBoundingBox.left + 110 && this.currentBoundingBox.right <= objCurrentBoundingBox.right + 110 && this.currentBoundingBox.left+50 <= objCurrentBoundingBox.left) ||
+                (this.currentBoundingBox.right > objCurrentBoundingBox.right + 110 && this.currentBoundingBox.left+50 <= objCurrentBoundingBox.right && this.currentBoundingBox.left+50 > objCurrentBoundingBox.left)
+                );
+            var overlappedVertical = (
+                this.currentBoundingBox.bottom < objCurrentBoundingBox.bottom && this.currentBoundingBox.bottom >= objCurrentBoundingBox.top ||
+                this.currentBoundingBox.top > objCurrentBoundingBox.top && this.currentBoundingBox.top <= objCurrentBoundingBox.bottom
+            );
+
+            if (overlappedHorizontal) {
+                if (this.isJumping) {
+                    if (overlappedVertical) {
+                        //console.log(heroboundingrect.bottom, crashedboundingrect.top);
+                        crashReturnObj.crash = true;
+                    }
+                }
+                else{
+                crashReturnObj.crash = true;
+                }
+            }
+            
+/// to be in game class 
+        if(objectHit.classList.contains("collectable--heart"))
         {
             updateLives(true);
         }
         else if(objectHit.classList.contains("obstacle--cactus--1") || objectHit.classList.contains("obstacle--cactus--2")
-        || objectHit.classList.contains("obstacle--rock--1") || objectHit.classList.contains("obstacle--rock--5") )
+        || objectHit.classList.contains("obstacle--rock--1") || objectHit.classList.contains("obstacle--rock--5")|| objectHit.classList.contains("obstacle--rock--2") || objectHit.classList.contains("obstacle--rock--3") || objectHit.classList.contains("obstacle--rock--4")  )
         {
             updateLives(false);
             stopCurrentAnimation();
