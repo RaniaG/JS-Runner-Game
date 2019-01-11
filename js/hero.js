@@ -211,6 +211,8 @@ class Hero extends gameObject {
             }
             else {
                 this.stopCurrentAnimation();
+                window.location.href = 'gameover.html?goldcoins='+this.coins.gold+"&silvercoins="+this.coins.silver+"&miles="+this.milage;
+             
             }
         }, this.animateInterval * 1.25);
     }
