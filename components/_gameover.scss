@@ -1,0 +1,66 @@
+.bgcontainer {
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+
+.gameover {
+    height: 100vh;
+    overflow: hidden;
+    &__starts {
+        @extend .bgcontainer;
+        background-image: url(../images/layer1.png);
+        position: relative;
+        bottom: 55px;
+    }
+    &__clouds {
+        @extend .bgcontainer;
+        background-image: url(../images/layer2.png);
+    }
+    &__mountaines {
+        background-image: url(../images/layer3.png);
+        @extend .bgcontainer;
+    }
+    &__ground {
+        background-image: url(../images/layer5.png);
+        height: 800px;
+        @extend .bgcontainer;
+        position: relative;
+        bottom: 75px;
+    }
+    &__score {
+        font-family: 'ZCOOL KuaiLe', cursive; // font-family: 'Coiny', cursive;
+        font-size: 40px;
+        color: #6B2A3B;
+        padding-top: 300px;
+    }
+    &__details {
+        padding: 20px;
+    }
+    &__text {
+        padding-left: 20px;
+    }
+    &__hero {
+        margin-top: 175px;
+        margin-left: 300px;
+        margin-right: 20px;
+        width: 310px;
+        height: 504px;
+        background: url('../images/gameover/test.png') left;
+        animation: idle 0.8s steps(10) infinite;
+    }
+}
+
+.c {
+    &--gold {
+        width: 52px;
+        height: 50px;
+        background: url('../images/gameover/goldcoins.png') left center;
+        animation: coin .8s steps(10) infinite;
+    }
+    &--silver {
+        width: 52px;
+        height: 50px;
+        background: url('../images/gameover/silvercoins.png') left center;
+        animation: coin .8s steps(10) infinite;
+    }
+}

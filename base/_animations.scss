@@ -34,11 +34,24 @@
     }
 }
 
+
 @keyframes troll-walk {
     from {
         background-position-x: 0px;
     }
     to {
         background-position-x: -1809px;
-    }
+    }}
+
+@keyframes troll-walk{
+  from{background-position-x:0px;}
+  to{background-position-x:-1809px;}
+}
+@keyframes idle {
+    100% { background-position: -3113px; }
+}
+
+@keyframes coin {
+    100% { background-position: -552px; }
+
 }

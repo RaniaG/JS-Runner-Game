@@ -1,7 +1,7 @@
 class Gamelogic {
     constructor() {
-        this.lives=3;
-        this.coins ={
+        this.lives = 3;
+        this.coins = {
             gold: 0,
             silver: 0
         };
@@ -10,7 +10,7 @@ class Gamelogic {
 
     }
 
-    
+
     updateLives(extraLife) {
         //is extraLife true then add one else --
         var lives = document.getElementsByClassName("icon--heart")[0];
@@ -51,39 +51,35 @@ class Gamelogic {
         this.gameOver = true;
     }
 
-    updateGame()
-    {
+    updateGame() {
         var possibleHits;
         document.elementsFromPoint(250);
         //to be continue ....
-        var index=0;
-        var crash=false;
+        var index = 0;
+        var crash = false;
         do {
             crash = hero.crash(possibleHits[index]);
-            if(crash)
-            {
+            if (crash) {
                 /// to be in game class 
-                if(possibleHits[index].classList.contains("collectable--heart"))
-                {
+                if (possibleHits[index].classList.contains("collectable--heart")) {
                     updateLives(true);
                 }
-                else if(possibleHits[index].classList.contains("obstacle--cactus--1") || possibleHits[index].classList.contains("obstacle--cactus--2")
-                || possibleHits[index].classList.contains("obstacle--rock--1") || possibleHits[index].classList.contains("obstacle--rock--5")
-                || possibleHits[index].classList.contains("obstacle--rock--2") || possibleHits[index].classList.contains("obstacle--rock--3")
-                || possibleHits[index].classList.contains("obstacle--rock--4")  )
-                {
+                else if (possibleHits[index].classList.contains("obstacle--cactus--1") || possibleHits[index].classList.contains("obstacle--cactus--2")
+                    || possibleHits[index].classList.contains("obstacle--rock--1") || possibleHits[index].classList.contains("obstacle--rock--5")
+                    || possibleHits[index].classList.contains("obstacle--rock--2") || possibleHits[index].classList.contains("obstacle--rock--3")
+                    || possibleHits[index].classList.contains("obstacle--rock--4")) {
                     updateLives(false);
                 }
-                else if(possibleHits[index].classList.contains("obstacles--enemy")){
+                else if (possibleHits[index].classList.contains("obstacles--enemy")) {
                     endGame();
                 }
-                else if(possibleHits[index].classList.contains("collectable--coin--gold")){
+                else if (possibleHits[index].classList.contains("collectable--coin--gold")) {
                     updateCoins("gold")
                 }
-                else if(possibleHits[index].classList.contains("collectable--coin--silver")){
+                else if (possibleHits[index].classList.contains("collectable--coin--silver")) {
                     updateCoins("silver")
                 }
-                    }
+            }
         } while (!crash);
 
     }

@@ -1,3 +1,9 @@
+.flex {
+  display: flex; }
+
+.m-auto {
+  margin: auto; }
+
 * {
   padding: 0;
   margin: 0; }
@@ -34,6 +40,20 @@ body {
     background-position-x: 0px; }
   to {
     background-position-x: -1809px; } }
+
+@keyframes troll-walk {
+  from {
+    background-position-x: 0px; }
+  to {
+    background-position-x: -1809px; } }
+
+@keyframes idle {
+  100% {
+    background-position: -3113px; } }
+
+@keyframes coin {
+  100% {
+    background-position: -552px; } }
 
 .collectable--coin {
   width: 100px;
@@ -113,7 +133,7 @@ body {
     width: 300px;
     height: 219px; }
 
-.bgcontainer, .bg__starts, .bg__clouds, .bg__mountaines, .bg__ground {
+.bgcontainer, .bg__starts, .bg__clouds, .bg__mountaines, .bg__ground, .gameover__starts, .gameover__clouds, .gameover__mountaines, .gameover__ground {
   background-size: 100% 100%;
   background-repeat: repeat-x; }
 
@@ -164,3 +184,53 @@ body {
   .icon--run {
     background-image: url("../images/Idle.png");
     top: 0px; }
+
+.bgcontainer, .bg__starts, .bg__clouds, .bg__mountaines, .bg__ground, .gameover__starts, .gameover__clouds, .gameover__mountaines, .gameover__ground {
+  background-size: 100% 100%;
+  background-repeat: repeat-x; }
+
+.gameover {
+  height: 100vh;
+  overflow: hidden; }
+  .gameover__starts {
+    background-image: url(../images/layer1.png);
+    position: relative;
+    bottom: 55px; }
+  .gameover__clouds {
+    background-image: url(../images/layer2.png); }
+  .gameover__mountaines {
+    background-image: url(../images/layer3.png); }
+  .gameover__ground {
+    background-image: url(../images/layer5.png);
+    height: 800px;
+    position: relative;
+    bottom: 75px; }
+  .gameover__score {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 40px;
+    color: #6B2A3B;
+    padding-top: 300px; }
+  .gameover__details {
+    padding: 20px; }
+  .gameover__text {
+    padding-left: 20px; }
+  .gameover__hero {
+    margin-top: 175px;
+    margin-left: 300px;
+    margin-right: 20px;
+    width: 310px;
+    height: 504px;
+    background: url("../images/gameover/test.png") left;
+    animation: idle 0.8s steps(10) infinite; }
+
+.c--gold {
+  width: 52px;
+  height: 50px;
+  background: url("../images/gameover/goldcoins.png") left center;
+  animation: coin 0.8s steps(10) infinite; }
+
+.c--silver {
+  width: 52px;
+  height: 50px;
+  background: url("../images/gameover/silvercoins.png") left center;
+  animation: coin 0.8s steps(10) infinite; }
