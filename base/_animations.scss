@@ -16,14 +16,6 @@
     }
 }
 
-@keyframes troll-walk {
-    from {
-        background-position-x: 0px;
-    }
-    to {
-        background-position-x: -1207px;
-    }
-}
 
 @keyframes bg {
     from {
@@ -53,5 +45,20 @@
 
 @keyframes coin {
     100% { background-position: -552px; }
-
+}
+@keyframes rock-destroy{
+    from {
+        background-position-x: 0px;
+    }
+    to {
+        background-position-x: -900px;
+    }
+}
+@keyframes cactus-destroy{
+    from {
+        background-position-x: 0px;
+    }
+    to {
+        background-position-x: -700px;
+    }
 }

@@ -26,7 +26,7 @@ class Sound{
         if (url==null ) return;
         this.audio = new Audio(url);
         // this.audio.type = 'audio/wav';
-        console.log(this.audio);
+        // console.log(this.audio);
     }
     play(){
         // console.log(this.audio);

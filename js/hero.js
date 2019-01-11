@@ -123,6 +123,8 @@ class Hero extends gameObject {
             this.isShooting = true;
             this.shoots = true;
             this.isJumping = true;
+            var shootSound = new Sound(3);
+            shootSound.play();  
             this.clearAnimateInterval = window.setInterval(() => {
                 this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.shoot + ")";
                 this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
@@ -136,8 +138,17 @@ class Hero extends gameObject {
                     this.shoots = false;
                     this.isJumping = false;
                     this.startRunning();
+                    /**************************************************************** */
+                    var enemy=document.querySelector(".obstacle--enemy");
+                    if(enemy&&enemy.offsetLeft<1200)
+                    {
+                        console.log(enemy.offsetLeft);
+                        enemy.className="destroy--enemy";
+                        var trollDieSound = new Sound(5); 
+                        trollDieSound.play(); 
+                     }
                 }
-            }, this.animateInterval * 0.5);
+            }, this.animateInterval*0.1);
 
         }
     }
@@ -150,8 +161,9 @@ class Hero extends gameObject {
             this.isShooting = true;
             this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.jump + ")";
             var imageNumber = 0;
-            var distanceFromGround = this.top - this.topPosition;
-            console.log(distanceFromGround);
+
+            var distanceFromGround=this.top-this.topPosition;
+            // console.log(distanceFromGround);
 
             this.startSliceOffset = this.stripeOffset;
             this.clearAnimateInterval = window.setInterval(() => {
@@ -229,6 +241,7 @@ class Hero extends gameObject {
         //if heart
         //if coin
         //if obstacle
+
         //if to end game
         // if to reduce lives
         // if(this.currentBottomPos > objCurrentTopPos || this.cur < objCurrentTopPos)
@@ -242,6 +255,7 @@ class Hero extends gameObject {
         // possibleHits.push(document.elementsFromPoint(heroActualLeft, (heroActualTop+111))[1]);
         // possibleHits.push(document.elementsFromPoint((heroActualLeft+37), heroActualTop)[1]);
         // possibleHits.push(document.elementsFromPoint((heroActualLeft+112), heroActualTop)[1]);
+
 
         for (let index = 0; index < possibleHits.length; index++) {
             if (possibleHits[index].classList.contains("collectable--heart")) {
@@ -259,17 +273,19 @@ class Hero extends gameObject {
             else if (possibleHits[index].classList.contains("obstacle--cactus--1")) {
                 debugger;
                 this.updateLives(false);
-                possibleHits[index].classList.remove("obstacle--cactus--1");
-                possibleHits[index].classList.add("destroy--cactus");
+                // possibleHits[index].classList.remove("obstacle--cactus--1");
+                // possibleHits[index].classList.add("destroy--cactus");
+                destroyCactus(possibleHits[index]);
 
             }
             else if (possibleHits[index].classList.contains("obstacle--rock--5")) {
                 this.updateLives(false);
-                possibleHits[index].classList.remove("obstacle--rock--5");
-                possibleHits[index].classList.add("destroy--rock");
+                // possibleHits[index].classList.remove("obstacle--rock--5");
+                // possibleHits[index].classList.add("destroy--rock");
+                destroyRock(possibleHits[index]);
+
 
             }
-
             else if (possibleHits[index].classList.contains("obstacle--enemy")) {
                 this.endGame();
             }
@@ -364,8 +380,10 @@ var x = {
     deadSprite: 'images/dead.png',
     dead: 'images/dead2.png'
 };
-console.log(x.run);
-var hero = new Hero(70, x, 300, 0, { run: 2400, jump: 3000, shoot: 900, dead: 3000 }, document.getElementById("hero"))
+
+// console.log(x.run);
+var hero = new Hero(70, x, 300, 0, { run: 2400, jump:3000, shoot: 900, dead: 3000  }, document.getElementById("hero"))
+
 hero.startRunning();
 
 window.onkeydown = function (event) {

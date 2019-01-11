@@ -5,6 +5,7 @@
     animation-duration: $velocity;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
+    left:100%;
     &--rock{
         &--1{
             background-image: url(../images/rock1.png);

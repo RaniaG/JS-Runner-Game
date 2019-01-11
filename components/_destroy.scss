@@ -1,0 +1,21 @@
+.destroy{
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation-timing-function:steps(5);
+    animation-fill-mode: forwards;
+    animation-duration: 0.3s;
+    &--enemy{
+        display: none;
+    }
+    &--rock{
+        width:200px;
+        height: 200*0.6177px;
+        background-image: url("../images/rockDestroy.png");
+    }
+    &--cactus{
+        width:150px;
+        height: 150*0.8031px;
+        background-image: url("../images/cactusDestroy.png");
+    }
+}

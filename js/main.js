@@ -17,6 +17,22 @@ function pauseAnimation(obj){
 function replayAnimation(obj){
     obj.style.animationPlayState='running';
 }
+
+function destroyRock(x){
+    var left=window.getComputedStyle(x).getPropertyValue("left");
+    x.className="destroy destroy--rock";
+    x.style.animationName="rock-destroy";
+    x.style.left=left;
+}
+function destroyCactus(x){
+    var left=window.getComputedStyle(x).getPropertyValue("left");
+    x.className="destroy destroy--cactus";
+    x.style.animationName="cactus-destroy";
+    x.style.left=left;
+}
+
+
+
 /**************************************** MOVING OBJECT CLASS ********************************************************************* */
 class MovingObject{
     constructor(y,w,h){
