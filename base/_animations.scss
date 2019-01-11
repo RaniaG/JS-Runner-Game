@@ -26,20 +26,19 @@
 }
 
 @keyframes bg {
-
     from {
-        background-position:1366px 0;
-
+        background-position: 1366px 0;
     }
-
     to {
         background-position: 0px 0px;
-
     }
 }
 
-@keyframes troll-walk{
-  from{background-position-x:0px;}
-  to{background-position-x:-1809px;}
+@keyframes troll-walk {
+    from {
+        background-position-x: 0px;
+    }
+    to {
+        background-position-x: -1809px;
+    }
 }
-
