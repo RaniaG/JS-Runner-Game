@@ -139,14 +139,7 @@ class Hero extends gameObject {
                     this.isJumping = false;
                     this.startRunning();
                     /**************************************************************** */
-                    var enemy=document.querySelector(".obstacle--enemy");
-                    if(enemy&&enemy.offsetLeft<1200)
-                    {
-                        console.log(enemy.offsetLeft);
-                        enemy.className="destroy--enemy";
-                        var trollDieSound = new Sound(5); 
-                        trollDieSound.play(); 
-                     }
+                    destroyEnemy();
                 }
             }, this.animateInterval*0.1);
 
@@ -262,7 +255,8 @@ class Hero extends gameObject {
         for (let index = 0; index < possibleHits.length; index++) {
             if (possibleHits[index].classList.contains("collectable--heart")) {
                 this.updateLives(true);
-                possibleHits[index].remove;
+                // possibleHits[index].remove();
+                    destroyHeart(possibleHits[index]);
             }
             // else if(possibleHits[index].classList.contains("obstacle--cactus--1") || possibleHits[index].classList.contains("obstacle--cactus--2")
             // || possibleHits[index].classList.contains("obstacle--rock--1") || possibleHits[index].classList.contains("obstacle--rock--5")
@@ -294,11 +288,13 @@ class Hero extends gameObject {
             else if (possibleHits[index].classList.contains("collectable--coin__face")) {
                 if (possibleHits[index].parentElement.classList.contains("collectable--coin--gold")) {
                     this.updateCoins("gold");
-                    possibleHits[index].remove;
+                    // possibleHits[index].remove();
+                    destroyCoin(possibleHits[index]);
                 }
                 else if (possibleHits[index].parentElement.classList.contains("collectable--coin--silver")) {
                     this.updateCoins("silver");
-                    possibleHits[index].remove;
+                    // possibleHits[index].remove();
+                    destroyCoin(possibleHits[index]);
                 }
             }
 

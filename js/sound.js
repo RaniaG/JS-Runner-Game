@@ -11,7 +11,7 @@ class Sound{
                 url='./sounds/hero_jump.wav';
                 break;
             case 2: //hero hit
-                url='./sounds/hero_hit_1.wav';
+                url='./sounds/hero_hit_1.mp3';
                 break;
             case 3: //shot
                 url='./sounds/shoot.wav';
@@ -22,14 +22,17 @@ class Sound{
             case 5: //troll die
                 url='./sounds/troll_die.wav';
                 break;
+            case 6: //heart
+                url='./sounds/heart.wav';
+                break;
+            case 7: //background music
+                url='./sounds/background_music.mp3';
+                break;
         }
         if (url==null ) return;
         this.audio = new Audio(url);
-        // this.audio.type = 'audio/wav';
-        // console.log(this.audio);
     }
     play(){
-        // console.log(this.audio);
         this.audio.play();       
     }
 }
@@ -40,22 +43,3 @@ var heroHitSound=new Sound(2);
 var shootSound=new Sound(3);
 var trollEnterSound=new Sound(4);
 var trollDieSound=new Sound(5);
-
-// setTimeout(()=>{
-//     coinCollectSound.play();
-// },2000);
-// setTimeout(()=>{
-//     heroJumpSound.play();
-// },4000);
-// setTimeout(()=>{
-//     heroHitSound.play();
-// },6000);
-// setTimeout(()=>{
-//     shootSound.play();
-// },8000);
-// setTimeout(()=>{
-//     trollEnterSound.play();
-// },10000);
-// setTimeout(()=>{
-//     trollDieSound.play();
-// },12000);

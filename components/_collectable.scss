@@ -8,6 +8,7 @@
         animation-duration: $coin-rotation-speed,$velocity;
         animation-iteration-count: infinite, 1;
         animation-timing-function: linear;
+
         // animation-delay: 0.5s,0s;
         &__face{
             background-size:cover;

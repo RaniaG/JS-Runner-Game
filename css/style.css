@@ -48,6 +48,7 @@ body {
 @keyframes coin {
   100% {
     background-position: -552px; } }
+
 @keyframes rock-destroy {
   from {
     background-position-x: 0px; }
@@ -240,6 +241,7 @@ body {
   height: 50px;
   background: url("../images/gameover/silvercoins.png") left center;
   animation: coin 0.8s steps(10) infinite; }
+
 .sounds {
   position: absolute; }
   .sounds audio {
@@ -252,8 +254,6 @@ body {
   animation-timing-function: steps(5);
   animation-fill-mode: forwards;
   animation-duration: 0.3s; }
-  .destroy--enemy {
-    display: none; }
   .destroy--rock {
     width: 200px;
     height: 123.54px;

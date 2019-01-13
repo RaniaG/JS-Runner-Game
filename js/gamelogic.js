@@ -7,10 +7,17 @@ class Gamelogic {
         };
         this.milage;
         this.gameOver = false;
-
+        this.generation = new Generation();
+        this.backMusic=new Sound(7);
     }
 
-
+    startGame(){
+        this.backMusic.play();
+        setInterval(()=>{
+            this.backMusic.play();
+        },121000);
+        this.generation.start();
+    }
     updateLives(extraLife) {
         //is extraLife true then add one else --
         var lives = document.getElementsByClassName("icon--heart")[0];
@@ -84,4 +91,6 @@ class Gamelogic {
 
     }
 }
+var game=new Gamelogic();
+game.startGame();
 hero.updateLives(true);

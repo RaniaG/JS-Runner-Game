@@ -19,16 +19,42 @@ function replayAnimation(obj){
 }
 
 function destroyRock(x){
+    var heroHitSound=new Sound(2);
+    heroHitSound.play();
     var left=window.getComputedStyle(x).getPropertyValue("left");
     x.className="destroy destroy--rock";
     x.style.animationName="rock-destroy";
     x.style.left=left;
+    
+
 }
 function destroyCactus(x){
+    var heroHitSound=new Sound(2);
+    heroHitSound.play();
     var left=window.getComputedStyle(x).getPropertyValue("left");
     x.className="destroy destroy--cactus";
     x.style.animationName="cactus-destroy";
     x.style.left=left;
+    
+}
+function destroyEnemy(){
+    var enemy=document.querySelector(".obstacle--enemy");
+    if(enemy&&enemy.offsetLeft<1200)
+    {
+        enemy.remove();
+        var trollDieSound = new Sound(5); 
+        trollDieSound.play(); 
+    }
+}
+function destroyCoin(x){
+    var coinSound=new Sound(0);
+    coinSound.play();
+    x.remove();
+}
+function destroyHeart(x){
+    var heartSound=new Sound(6);
+    heartSound.play();
+    x.remove();
 }
 
 

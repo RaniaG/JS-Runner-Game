@@ -1,12 +1,13 @@
 
 class Generation {
     constructor() {
-        this.obstacleGenerationTime = [500, 2000];
+        this.obstacleGenerationTime = [500, 3000];
         this.coinGenerationTime = 150;
         this.obstacleKind = 1;
         this.generatedObjects = [];
-        this.heartTimeInterval = 2000 * 50;
+        this.heartTimeInterval = 2000 * 10;
         this.heartTime = Date.now();
+        this.level=0;
     }
     start() {
         setInterval(() => {
@@ -85,7 +86,13 @@ class Generation {
             }, this.coinGenerationTime);
         }
     }
+    increaseLevel(){
+        if(this.obstacleGenerationTime[1]>500)
+           { 
+               this.obstacleGenerationTime[1]-=250;
+               this.level++;
+            }
+    }
 }
-var g = new Generation();
-g.start();
+
 
