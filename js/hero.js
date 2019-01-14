@@ -30,6 +30,8 @@ class Hero extends gameObject {
         };
         this.milage = 0;
         this.gameOver = false;
+        this.stumbled=false;
+        this.fadeInterval;
         // this.currentBoundingBox = this.heroCharacter.getBoundingClientRect();
         // console.log(this.currentBoundingBox.top);
         // this.heroActualTop =isNaN(this.currentBoundingBox.top+20);
@@ -78,7 +80,36 @@ class Hero extends gameObject {
         }, this.animateInterval);
         // }
     }
+    stumble()
+    {
+       // this.stopCurrentAnimation();
+        // this.isShooting = true;
+        // this.isJumping= true;
+        if (!this.stumbled)
+        {
+            this.stumbled=true;
+        this.fadeInterval = window.setInterval(() => {
+            this.heroCharacter.style.backgroundImage = "url(" + this.stripeURLs.run + ")";
+            this.heroCharacter.style.backgroundPosition = (-1 * this.startSliceOffset) + 'px 254px';
+            // console.log(this.startSliceOffset);
+            if (this.startSliceOffset < this.stripeEnds.run) {
+                this.startSliceOffset = this.startSliceOffset + this.stripeOffset;
+                this.heroCharacter.style.opacity -= 0.125;
 
+            }
+            else {
+                this.startSliceOffset = this.stripeOffset;
+                this.heroCharacter.style.opacity = 1;
+                // this.isShooting = false;
+                // this.isJumping= false;
+                //this.stopCurrentAnimation();
+                window.clearInterval(this.fadeInterval);
+                this.startRunning();
+                this.stumbled = false;
+            }
+        }, this.animateInterval*0.5);
+        }
+}
     startJumping() {
         // debugger;
         if (this.isJumping == false) {
@@ -241,60 +272,68 @@ class Hero extends gameObject {
         // if to reduce lives
         // if(this.currentBottomPos > objCurrentTopPos || this.cur < objCurrentTopPos)
         //#region inne Condition of crash boundaries0
-        var possibleHits = [];
+        var possibleHitsPoints = [];
         var currentBoundingBox = this.heroCharacter.getBoundingClientRect();
-        var heroActualTop = currentBoundingBox.top + 20;
-        var heroActualLeft = (currentBoundingBox.left + 50);
+        var heroActualTop = currentBoundingBox.top + 20; //startof the hat 
+        var heroActualLeft = (currentBoundingBox.left + 50); // start of the hero left
         // console.log(document.elementsFromPoint(heroActualLeft+75, (heroActualTop+111)));
-        possibleHits.push(document.elementsFromPoint(heroActualLeft + 75, (heroActualTop + 111))[1]);
-        // possibleHits.push(document.elementsFromPoint(heroActualLeft, (heroActualTop+111))[1]);
+        // possibleHits.push(document.elementsFromPoint(heroActualLeft + 75, (heroActualTop + 111))[1]);
+         possibleHitsPoints.push([heroActualLeft,heroActualTop]);
+         possibleHitsPoints.push([heroActualLeft+150,heroActualTop]);
+         possibleHitsPoints.push([heroActualLeft,heroActualTop+222]);
+         possibleHitsPoints.push([heroActualLeft+150,heroActualTop+222]);
+         possibleHitsPoints.push([heroActualLeft+75,heroActualTop+111]);
         // possibleHits.push(document.elementsFromPoint((heroActualLeft+37), heroActualTop)[1]);
         // possibleHits.push(document.elementsFromPoint((heroActualLeft+112), heroActualTop)[1]);
 
 
-        for (let index = 0; index < possibleHits.length; index++) {
-            if (possibleHits[index].classList.contains("collectable--heart")) {
+        for (let index = 0; index < possibleHitsPoints.length; index++) {
+            var possibleHits = document.elementsFromPoint(possibleHitsPoints[index][0],possibleHitsPoints[index][1])[1];
+            console.log(possibleHits);
+            if (possibleHits.classList.contains("collectable--heart")) {
                 this.updateLives(true);
-                // possibleHits[index].remove();
-                    destroyHeart(possibleHits[index]);
+                // possibleHits.remove();
+                    destroyHeart(possibleHits);
             }
-            // else if(possibleHits[index].classList.contains("obstacle--cactus--1") || possibleHits[index].classList.contains("obstacle--cactus--2")
-            // || possibleHits[index].classList.contains("obstacle--rock--1") || possibleHits[index].classList.contains("obstacle--rock--5")
-            // || possibleHits[index].classList.contains("obstacle--rock--2") || possibleHits[index].classList.contains("obstacle--rock--3")
-            // || possibleHits[index].classList.contains("obstacle--rock--4")  )
+            // else if(possibleHits.classList.contains("obstacle--cactus--1") || possibleHits.classList.contains("obstacle--cactus--2")
+            // || possibleHits.classList.contains("obstacle--rock--1") || possibleHits.classList.contains("obstacle--rock--5")
+            // || possibleHits.classList.contains("obstacle--rock--2") || possibleHits.classList.contains("obstacle--rock--3")
+            // || possibleHits.classList.contains("obstacle--rock--4")  )
             // {
             //     this.updateLives(false);
 
             // }
-            else if (possibleHits[index].classList.contains("obstacle--cactus--1")) {
-                debugger;
+            else if (possibleHits.classList.contains("obstacle--cactus--1")) {
+               // debugger;
                 this.updateLives(false);
-                // possibleHits[index].classList.remove("obstacle--cactus--1");
-                // possibleHits[index].classList.add("destroy--cactus");
-                destroyCactus(possibleHits[index]);
+                // possibleHits.classList.remove("obstacle--cactus--1");
+                // possibleHits.classList.add("destroy--cactus");
+                destroyCactus(possibleHits);
 
             }
-            else if (possibleHits[index].classList.contains("obstacle--rock--5")) {
+            else if (possibleHits.classList.contains("obstacle--rock--5")) {
                 this.updateLives(false);
-                // possibleHits[index].classList.remove("obstacle--rock--5");
-                // possibleHits[index].classList.add("destroy--rock");
-                destroyRock(possibleHits[index]);
+                // possibleHits.classList.remove("obstacle--rock--5");
+                // possibleHits.classList.add("destroy--rock");
+                destroyRock(possibleHits);
+               // this.stumble();
+
 
 
             }
-            else if (possibleHits[index].classList.contains("obstacle--enemy")) {
+            else if (possibleHits.classList.contains("obstacle--enemy")) {
                 this.endGame();
             }
-            else if (possibleHits[index].classList.contains("collectable--coin__face")) {
-                if (possibleHits[index].parentElement.classList.contains("collectable--coin--gold")) {
+            else if (possibleHits.classList.contains("collectable--coin__face")) {
+                if (possibleHits.parentElement.classList.contains("collectable--coin--gold")) {
                     this.updateCoins("gold");
-                    // possibleHits[index].remove();
-                    destroyCoin(possibleHits[index]);
+                    // possibleHits.remove();
+                    destroyCoin(possibleHits);
                 }
-                else if (possibleHits[index].parentElement.classList.contains("collectable--coin--silver")) {
+                else if (possibleHits.parentElement.classList.contains("collectable--coin--silver")) {
                     this.updateCoins("silver");
-                    // possibleHits[index].remove();
-                    destroyCoin(possibleHits[index]);
+                    // possibleHits.remove();
+                    destroyCoin(possibleHits);
                 }
             }
 
@@ -330,11 +369,17 @@ class Hero extends gameObject {
         //is extraLife true then add one else --
         var lives = document.getElementsByClassName("icon--heart")[0];
         if (extraLife) {
+            // var heartsound= new Sound(6);
+            // heartsound.play();
             this.lives++;
         }
         else {
             if (this.lives > 0)
+            {
+            // var hurtsound= new Sound(2);
+            // hurtsound.play();
                 this.lives--;
+            }
             else
                 this.endGame();
         }

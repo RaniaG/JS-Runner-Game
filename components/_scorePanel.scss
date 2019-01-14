@@ -1,0 +1,17 @@
+.scorePanel
+{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 5000;
+    &__item
+    {
+        font-family: 'ZCOOL KuaiLe', cursive; // font-family: 'Coiny', cursive;
+        font-size: 16px;
+        align-self: flex-start;
+        color:#6B2A3B;
+    }
+}

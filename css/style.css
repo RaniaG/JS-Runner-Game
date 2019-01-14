@@ -262,3 +262,17 @@ body {
     width: 150px;
     height: 120.465px;
     background-image: url("../images/cactusDestroy.png"); }
+
+.scorePanel {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 5000; }
+  .scorePanel__item {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 16px;
+    align-self: flex-start;
+    color: #6B2A3B; }
