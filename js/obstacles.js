@@ -23,7 +23,7 @@ class Rock extends Obstacle{
     draw(){
         super.draw();
         this.div.style.top=(parseInt(roadTop)-(this.height))+"px";
-        container.appendChild(this.div);
+        this.container.appendChild(this.div);
     }
     animate(){
         this.div.style.animationName=' move-horizontal';
@@ -38,7 +38,7 @@ class Cactus extends Obstacle{
     }
     draw(){
         super.draw();
-        container.appendChild(this.div);
+        this.container.appendChild(this.div);
     }
     animate(){
         this.div.style.animationName=' move-horizontal';
@@ -56,7 +56,7 @@ class Enemy extends Obstacle{
     draw(){
         super.draw();
         this.sound.play();
-        container.appendChild(this.div);
+        this.container.appendChild(this.div);
     }
     animate(){
         this.div.style.animationName='move-horizontal, troll-walk';

@@ -71,7 +71,7 @@ body {
   border-radius: 50%;
   transform-style: preserve-3d;
   position: absolute;
-  animation-duration: 1s, 2s;
+  animation-duration: 2s, 2s;
   animation-iteration-count: infinite, 1;
   animation-timing-function: linear; }
   .collectable--coin__face {

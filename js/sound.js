@@ -2,6 +2,7 @@ class Sound{
     constructor(type)
     {
         var url=null;
+        this.volume=1.0;
         switch(type)
         {
             case 0: //coin collect
@@ -27,19 +28,21 @@ class Sound{
                 break;
             case 7: //background music
                 url='./sounds/background_music.mp3';
+                this.volume=0.5;
                 break;
         }
         if (url==null ) return;
         this.audio = new Audio(url);
+        this.audio.volume=this.volume;
     }
     play(){
         this.audio.play();       
     }
 }
 
-var coinCollectSound=new Sound(0);
-var heroJumpSound=new Sound(1);
-var heroHitSound=new Sound(2);
-var shootSound=new Sound(3);
-var trollEnterSound=new Sound(4);
-var trollDieSound=new Sound(5);
+// var coinCollectSound=new Sound(0);
+// var heroJumpSound=new Sound(1);
+// var heroHitSound=new Sound(2);
+// var shootSound=new Sound(3);
+// var trollEnterSound=new Sound(4);
+// var trollDieSound=new Sound(5);
