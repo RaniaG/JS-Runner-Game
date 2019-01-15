@@ -1,13 +1,26 @@
 const urlParams = new URLSearchParams(window.location.search);
-const myParam0 = urlParams.get('goldcoins');
-const myParam1 = urlParams.get('silvercoins');
-const myParam2 = urlParams.get('miles');
+const goldcoins = urlParams.get('goldcoins');
+const silvercoins = urlParams.get('silvercoins');
+const miles = parseInt(urlParams.get('miles'));
 var text = document.querySelectorAll(".gameover__text");
+var highScore = parseInt(localStorage.getItem("score"));
+
+function printScore() {
+    if (isNaN(highScore)) {
+        localStorage.setItem("score", miles);
+    }
+
+    if (miles > highScore) {
+        localStorage.setItem("score", miles);
+    }
+
+    highScore = localStorage.getItem("score");
+
+    var arr = [goldcoins, silvercoins, miles, highScore];
 
 
-var arr = [myParam0, myParam1, myParam2];
-
-
-text.forEach((el, i) => {
-    el.innerHTML += " " + arr[i];
-})
+    text.forEach((el, i) => {
+        el.innerHTML += " " + arr[i];
+    })
+}
+printScore();
