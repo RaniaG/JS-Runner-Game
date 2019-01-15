@@ -31,13 +31,10 @@
         font-family: 'ZCOOL KuaiLe', cursive;
         font-size: 30px;
         color: #6B2A3B;
-        padding-top: 300px;
+        padding-top: 250px;
     }
     &__details {
-        padding: 20px;
-    }
-    &__text {
-        padding-left: 20px;
+        padding: 10px;
     }
     &__hero {
         margin-top: 175px;
@@ -51,6 +48,9 @@
     &__Tryagain {
         color: #6B2A3B;
         text-decoration: none;
+        :hover {
+            color: rgb(153, 93, 90);
+        }
     }
 }
 

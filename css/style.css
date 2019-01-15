@@ -4,6 +4,12 @@
 .m-auto {
   margin: auto; }
 
+.pl-sm {
+  padding-left: 10px; }
+
+.pr-xs {
+  padding-right: 5px; }
+
 * {
   padding: 0;
   margin: 0; }
@@ -214,11 +220,9 @@ body {
     font-family: 'ZCOOL KuaiLe', cursive;
     font-size: 30px;
     color: #6B2A3B;
-    padding-top: 300px; }
+    padding-top: 250px; }
   .gameover__details {
-    padding: 20px; }
-  .gameover__text {
-    padding-left: 20px; }
+    padding: 10px; }
   .gameover__hero {
     margin-top: 175px;
     margin-left: 300px;
@@ -230,6 +234,8 @@ body {
   .gameover__Tryagain {
     color: #6B2A3B;
     text-decoration: none; }
+    .gameover__Tryagain :hover {
+      color: #995d5a; }
 
 .c--gold {
   width: 52px;
