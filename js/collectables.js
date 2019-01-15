@@ -1,4 +1,33 @@
 
+
+class MovingObject{
+    constructor(y,w,h){
+        this.y=y;
+        this.div=document.createElement("div");
+        this.width=w;
+        this.height=h;
+        this.timeOut=2; //second
+        this.timeOfAppearance;
+        this.container=document.querySelector(".bg");
+    }
+    animate(){
+        setTimeout((obj)=>{
+            obj.destroy();
+        },parseInt(this.timeOut)*1000,this);
+        // console.log("animation");
+    } 
+    draw(){
+        // console.log("draw");
+    }  
+    destroy(){
+        if(this!=null&&this.container.contains(this.div))
+       { 
+           this.container.removeChild(this.div);
+            // this=null;
+        }
+    }
+}
+
 /*******************************************    COLLECTABLES CLASSes  ***************************************************************************** */
 
 class Collectable extends MovingObject{
@@ -34,7 +63,7 @@ class Coin extends Collectable{
         this.div.appendChild(frontFace);
         this.div.appendChild(middleFace);
         this.div.appendChild(backFace);
-        container.appendChild(this.div);
+        this.container.appendChild(this.div);
         // this.drawMiddlePart(middleFace);
 
     }
@@ -69,7 +98,7 @@ class Heart extends Collectable{
     draw(){
         this.div.style.top=(parseInt(this.y)-(this.height))+"px";
         this.div.className+="collectable--heart";
-        container.appendChild(this.div);
+        this.container.appendChild(this.div);
     }
     animate(){
         this.div.style.animationName=' move-horizontal';

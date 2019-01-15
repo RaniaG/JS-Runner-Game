@@ -1,18 +1,22 @@
 
 class Generation {
     constructor() {
-        this.obstacleGenerationTime = [500, 3000];
+        this.obstacleGenerationTime = [1000, 3000];
         this.coinGenerationTime = 150;
         this.obstacleKind = 1;
         this.generatedObjects = [];
         this.heartTimeInterval = 2000 * 10;
         this.heartTime = Date.now();
         this.level=0;
+        this.showTroll=false;
     }
     start() {
         setInterval(() => {
             this.generateCollectable();
         }, this.coinGenerationTime);
+        setTimeout(()=>{ //start showing troll after 1 minute
+            this.showTroll=true;
+        },60000); 
         this.generateObstacle(this);
     }
     generateObstacle(g) {
@@ -24,7 +28,9 @@ class Generation {
             obj = null
         }
         if (g.obstacleKind == 1) {
-            obj = new Enemy(roadTop);
+            if(g.showTroll)
+                obj = new Enemy(roadTop);
+            else obj = new Rock(roadTop);
         }
         if (g.obstacleKind == 2) {
             obj = new Rock(roadTop);
