@@ -174,23 +174,17 @@ body {
 .icon {
   width: 40px;
   height: 40px;
-  left: 5px;
-  position: absolute;
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block; }
   .icon--heart {
-    background-image: url("../images/heart.png");
-    top: 41px; }
+    background-image: url("../images/heart.png"); }
   .icon--coin--gold {
-    background-image: url("../images/gold_coin.png");
-    top: 81px; }
+    background-image: url("../images/gold_coin.png"); }
   .icon--coin--silver {
-    background-image: url("../images/sliver_coin.png");
-    top: 121px; }
+    background-image: url("../images/sliver_coin.png"); }
   .icon--run {
-    background-image: url("../images/Idle.png");
-    top: 0px; }
+    background-image: url("../images/Idle.png"); }
 
 .bgcontainer, .bg__starts, .bg__clouds, .bg__mountaines, .bg__ground, .gameover__starts, .gameover__clouds, .gameover__mountaines, .gameover__ground {
   background-size: 100% 100%;
@@ -265,14 +259,20 @@ body {
 
 .scorePanel {
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
+  flex-flow: column-reverse nowrap;
   position: absolute;
   top: 0px;
-  right: 0px;
+  left: 5px;
   z-index: 5000; }
   .scorePanel__item {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center; }
+  .scorePanel__scoreText {
+    left: 2px;
+    position: relative;
     font-family: 'ZCOOL KuaiLe', cursive;
-    font-size: 16px;
-    align-self: flex-start;
+    font-size: 25px;
+    text-align: left;
     color: #6B2A3B; }

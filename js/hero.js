@@ -241,51 +241,20 @@ class Hero extends gameObject {
         }, this.animateInterval * 1.25);
     }
 
-    // crash(object)
-    // updateGame() ///
-    // {
-    //     for (let index = 0; index < generatedObjects.length; index++) {
-    //         this.crash(generatedObjects[index])
-    //         }
-    // }
+    
     crash() {
         var crashReturn = false;
-        // this.currentTopPos = this.heroCharacter.getBoundingClientRect().top;
-        // this.currentBottomPos = this.heroCharacter.getBoundingClientRect().bottom;
-        // this.currentLeftPos = this.heroCharacter.getBoundingClientRect().left;
-        // this.currentrightPos = this.currentLeftPos + this.heroCharacter.getBoundingClientRect().width;
-
-        // var objCurrentTopPos,objCurrentBottomPos,objCurrentLeftPos,objCurrentRightPos;
-
-        // var objCurrentBoundingBox = objectHit.getBoundingClientRect();
-
-        // objCurrentTopPos = objectHit.getBoundingClientRect().top;
-        // objCurrentBottomPos = objCurrentTopPos + objectHit.getBoundingClientRect().height;
-        // objCurrentLeftPos = objectHit.getBoundingClientRect().left;
-        // objCurrentRightPos = objCurrentLeftPos + objectHit.getBoundingClientRect().width;
-        //if collectable
-        //if heart
-        //if coin
-        //if obstacle
-
-        //if to end game
-        // if to reduce lives
-        // if(this.currentBottomPos > objCurrentTopPos || this.cur < objCurrentTopPos)
-        //#region inne Condition of crash boundaries0
+       
         var possibleHitsPoints = [];
         var currentBoundingBox = this.heroCharacter.getBoundingClientRect();
         var heroActualTop = currentBoundingBox.top + 20; //startof the hat 
         var heroActualLeft = (currentBoundingBox.left + 50); // start of the hero left
-        // console.log(document.elementsFromPoint(heroActualLeft+75, (heroActualTop+111)));
-        // possibleHits.push(document.elementsFromPoint(heroActualLeft + 75, (heroActualTop + 111))[1]);
+
          possibleHitsPoints.push([heroActualLeft,heroActualTop]);
          possibleHitsPoints.push([heroActualLeft+150,heroActualTop]);
          possibleHitsPoints.push([heroActualLeft,heroActualTop+222]);
          possibleHitsPoints.push([heroActualLeft+150,heroActualTop+222]);
          possibleHitsPoints.push([heroActualLeft+75,heroActualTop+111]);
-        // possibleHits.push(document.elementsFromPoint((heroActualLeft+37), heroActualTop)[1]);
-        // possibleHits.push(document.elementsFromPoint((heroActualLeft+112), heroActualTop)[1]);
-
 
         for (let index = 0; index < possibleHitsPoints.length; index++) {
             var possibleHits = document.elementsFromPoint(possibleHitsPoints[index][0],possibleHitsPoints[index][1])[1];
@@ -338,7 +307,7 @@ class Hero extends gameObject {
             }
 
         }
-
+// #region
         //  var overlappedHorizontal = (
         //     // (this.currentBoundingBox.right == objCurrentBoundingBox.left + 110 && this.currentBoundingBox.left < objCurrentBoundingBox.left) ||
         //     (this.currentBoundingBox.right >= objCurrentBoundingBox.left + 110 && this.currentBoundingBox.right <= objCurrentBoundingBox.right + 110 && this.currentBoundingBox.left+50 <= objCurrentBoundingBox.left) ||
@@ -367,7 +336,7 @@ class Hero extends gameObject {
     updateLives(extraLife) //
     {
         //is extraLife true then add one else --
-        var lives = document.getElementsByClassName("icon--heart")[0];
+        var lives = document.getElementById("lives");
         if (extraLife) {
             // var heartsound= new Sound(6);
             // heartsound.play();
@@ -389,13 +358,13 @@ class Hero extends gameObject {
     {
         if (type === "gold") {
             this.coins.gold++;
-            document.getElementsByClassName("icon--coin--gold")[0].innerHTML = "x" + this.coins.gold;
+            document.getElementById("coin--gold").innerHTML = "x" + this.coins.gold;
             this.updateMilage(500);
             console.log("gold " + this.coins.gold);
         }
         else if (type === "silver") {
             this.coins.silver++;
-            document.getElementsByClassName("icon--coin--silver")[0].innerHTML = "x" + this.coins.silver;
+            document.getElementById("coin--silver").innerHTML = "x" + this.coins.silver;
             this.updateMilage(100);
             console.log("silver " + this.coins.silver);
 
@@ -405,7 +374,7 @@ class Hero extends gameObject {
     updateMilage(milageIncrease) //
     {
         this.milage += milageIncrease;
-        document.getElementsByClassName("icon--run")[0].innerHTML = "x" + this.milage;
+        document.getElementById("icon--run").innerHTML = "x" + this.milage;
         console.log("milage " + this.milage);
 
     }

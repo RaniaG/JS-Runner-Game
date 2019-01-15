@@ -2,28 +2,28 @@
 {
     width: 40px;
     height: 40px;
-    left:5px;
-    position: absolute;
+    // left:5px;
+    // position: absolute;
     background-size:contain; 
     background-repeat: no-repeat;
     display: inline-block;
     &--heart{
         background-image: url("../images/heart.png");
-        top:41px;
+        //top:41px;
     }
     &--coin{
         // background-image: url("../images/gold_coin.png");
         &--gold{
             background-image: url("../images/gold_coin.png");
-            top : 81px;
+           // top : 81px;
         }
         &--silver{
             background-image: url("../images/sliver_coin.png");
-            top : 121px;
+            //top : 121px;
         }
     }
     &--run{
         background-image: url("../images/Idle.png");
-        top:0px;
+        //top:0px;
     }
 }

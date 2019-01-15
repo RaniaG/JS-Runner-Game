@@ -1,17 +1,28 @@
 .scorePanel
 {
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
+    flex-flow: column-reverse nowrap;
+    //justify-content: flex-start;
     position: absolute;
+    //width:20%;
     top: 0px;
-    right: 0px;
+    left: 5px;
     z-index: 5000;
     &__item
     {
+        display: flex;
+        flex-flow:row nowrap;
+        //flex-grow: 
+        justify-content: flex-start;
+        align-items: center;
+    }
+    &__scoreText
+    {
+        left:2px;
+        position: relative;
         font-family: 'ZCOOL KuaiLe', cursive; // font-family: 'Coiny', cursive;
-        font-size: 16px;
-        align-self: flex-start;
+        font-size: 25px;
+        text-align: left;
         color:#6B2A3B;
     }
 }
