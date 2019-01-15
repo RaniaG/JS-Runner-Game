@@ -28,8 +28,8 @@
         bottom: 75px;
     }
     &__score {
-        font-family: 'ZCOOL KuaiLe', cursive; // font-family: 'Coiny', cursive;
-        font-size: 40px;
+        font-family: 'ZCOOL KuaiLe', cursive;
+        font-size: 30px;
         color: #6B2A3B;
         padding-top: 300px;
     }
@@ -48,6 +48,10 @@
         background: url('../images/gameover/test.png') left;
         animation: idle 0.8s steps(10) infinite;
     }
+    &__Tryagain {
+        color: #6B2A3B;
+        text-decoration: none;
+    }
 }
 
 .c {
@@ -63,4 +67,11 @@
         background: url('../images/gameover/silvercoins.png') left center;
         animation: coin .8s steps(10) infinite;
     }
+}
+
+.runnerGirl {
+    width: 52px;
+    height: 50px;
+    background: url('../images/run2.png') left center;
+    animation: runnergirl .8s steps(8) infinite;
 }

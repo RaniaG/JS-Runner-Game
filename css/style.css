@@ -49,6 +49,10 @@ body {
   100% {
     background-position: -552px; } }
 
+@keyframes runnergirl {
+  100% {
+    background-position: -472px; } }
+
 @keyframes rock-destroy {
   from {
     background-position-x: 0px; }
@@ -208,7 +212,7 @@ body {
     bottom: 75px; }
   .gameover__score {
     font-family: 'ZCOOL KuaiLe', cursive;
-    font-size: 40px;
+    font-size: 30px;
     color: #6B2A3B;
     padding-top: 300px; }
   .gameover__details {
@@ -223,6 +227,9 @@ body {
     height: 504px;
     background: url("../images/gameover/test.png") left;
     animation: idle 0.8s steps(10) infinite; }
+  .gameover__Tryagain {
+    color: #6B2A3B;
+    text-decoration: none; }
 
 .c--gold {
   width: 52px;
@@ -235,6 +242,12 @@ body {
   height: 50px;
   background: url("../images/gameover/silvercoins.png") left center;
   animation: coin 0.8s steps(10) infinite; }
+
+.runnerGirl {
+  width: 52px;
+  height: 50px;
+  background: url("../images/run2.png") left center;
+  animation: runnergirl 0.8s steps(8) infinite; }
 
 .sounds {
   position: absolute; }
