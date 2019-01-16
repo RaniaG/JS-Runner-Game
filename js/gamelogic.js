@@ -1,6 +1,6 @@
 class Gamelogic {
     constructor() {
-        this.lives = 3;
+        this.lives = 5;
         this.coins = {
             gold: 0,
             silver: 0
@@ -34,6 +34,7 @@ class Gamelogic {
                     self.hero.startJumping();
                     break;
                 case 13: // enter
+                    //this.hitEnemy();
                     self.hero.shoot();
                     break;
                 case 38: // up arrow
@@ -55,7 +56,7 @@ class Gamelogic {
         possibleHitsPoints.push([heroActualLeft, heroActualTop]);
         possibleHitsPoints.push([heroActualLeft + 150, heroActualTop]);
         possibleHitsPoints.push([heroActualLeft, heroActualTop + 222]);
-        possibleHitsPoints.push([heroActualLeft + 150, heroActualTop + 222]);
+        possibleHitsPoints.push([heroActualLeft + 75, heroActualTop + 222]);
         possibleHitsPoints.push([heroActualLeft + 75, heroActualTop + 111]);
         possibleHitsPoints.push([heroActualLeft + 30, heroActualTop + 55]);
         possibleHitsPoints.push([heroActualLeft + 90, heroActualTop + 167]);
@@ -112,13 +113,13 @@ class Gamelogic {
             this.coins.gold++;
             document.getElementById("coin--gold").innerHTML = "x" + this.coins.gold;
             this.updateMilage(500);
-            console.log("gold " + this.coins.gold);
+            // console.log("gold " + this.coins.gold);
         }
         else if (type === "silver") {
             this.coins.silver++;
             document.getElementById("coin--silver").innerHTML = "x" + this.coins.silver;
             this.updateMilage(100);
-            console.log("silver " + this.coins.silver);
+            // console.log("silver " + this.coins.silver);
 
         }
 
@@ -127,7 +128,7 @@ class Gamelogic {
     {
         this.milage += milageIncrease;
         document.getElementById("icon--run").innerHTML = "x" + this.milage;
-        console.log("milage " + this.milage);
+        // console.log("milage " + this.milage);
 
     }
 
@@ -168,7 +169,7 @@ class Gamelogic {
     hitCoin(x) {
         var coinSound = new Sound(0);
         coinSound.play();
-        console.log(x.parentElement);
+        // console.log(x.parentElement);
         x.parentElement.remove();
     }
     hitHeart(x) {

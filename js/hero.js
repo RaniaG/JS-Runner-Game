@@ -122,7 +122,13 @@ class Hero {
                     this.isJumping = false;
                     this.startRunning();
                     /**************************************************************** */
-                    destroyEnemy();
+                    // destroyEnemy();
+                    var enemy = document.querySelector(".obstacle--enemy");
+                    if (enemy && enemy.offsetLeft < 1200) {
+                        enemy.remove();
+                        var trollDieSound = new Sound(5);
+                        trollDieSound.play();
+                    }
                 }
             }, this.animateInterval*0.1);
 

@@ -27,7 +27,7 @@ class Sound{
                 url='./sounds/heart.wav';
                 break;
             case 7: //background music
-                url='./sounds/background_music.mp3';
+                url='./sounds/background_music_2.mp3';
                 this.volume=0.5;
                 break;
         }

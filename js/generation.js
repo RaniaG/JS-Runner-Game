@@ -9,6 +9,7 @@ class Generation {
         this.heartTime = Date.now();
         this.level=0;
         this.showTroll=false;
+        this.trollAppearanceTime=20000;
     }
     start() {
         setInterval(() => {
@@ -16,7 +17,7 @@ class Generation {
         }, this.coinGenerationTime);
         setTimeout(()=>{ //start showing troll after 1 minute
             this.showTroll=true;
-        },60000); 
+        },this.trollAppearanceTime); 
         this.generateObstacle(this);
     }
     generateObstacle(g) {
